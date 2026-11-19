@@ -36,7 +36,24 @@ export function buildView(data) {
     s.ticksHtml = (s.ticks || []).map((t) => `<li><span>${richText(t)}</span></li>`).join('');
   });
   d.tour.firstLabel = d.tour.steps[0]?.label || '';
+  d.tour.firstImage = d.tour.steps[0]?.image || '';
   d.plans.items.forEach((p) => { p.link = waLink(d.contact.whatsapp, p.message); });
+  // Versão de 720 px (celular) ao lado de cada .webp: o navegador escolhe pelo tamanho da tela
+  const srcset = (img) => (/\.webp$/i.test(img || '') ? `${img.replace(/\.webp$/i, '-720.webp')} 720w, ${img} 1440w` : '');
+  d.hero.srcset = srcset(d.hero.image);
+  d.tour.steps.forEach((s) => { s.srcset = srcset(s.image); });
+  d.gallery.items.forEach((g, i) => { g.srcset = srcset(g.image); g.index = i; });
+  if (d.demo) {
+    d.demo.products.forEach((p, i) => {
+      const kg = /^kg$/i.test(p.unit || '');
+      p.index = i;
+      p.unitLabel = kg ? 'kg' : 'un';
+      p.step = kg ? '0.25' : '1';
+      p.value = String(p.price || '0').replace(/\./g, '').replace(',', '.');
+    });
+    d.demo.debtValue = String(d.demo.customerDebt || '0').replace(/\./g, '').replace(',', '.');
+    d.demo.limitValue = String(d.demo.customerLimit || '0').replace(/\./g, '').replace(',', '.');
+  }
   d.faq.items.forEach((f, i) => { f.open = i === 0; });
   d.jsonld = JSON.stringify(jsonLd(d), null, 2).replace(/</g, '\\u003c');
   return d;

@@ -51,6 +51,46 @@
       "label": "com cópia para pendrive ou nuvem"
     }
   ],
+  "demo": {
+    "eyebrow": "Teste agora",
+    "title": "Faça uma venda no caixa do Movix",
+    "intro": "Clique nos produtos, escolha a forma de pagamento e finalize com F9, como no balcão. É só uma simulação: nada é enviado.",
+    "customer": "Seu Zé",
+    "customerDebt": "139,47",
+    "customerLimit": "300,00",
+    "products": [
+      {
+        "name": "Cerveja Pilsen Lata 350ml",
+        "price": "4,49",
+        "unit": "UN"
+      },
+      {
+        "name": "Gelo em Cubos 5kg",
+        "price": "11,00",
+        "unit": "UN"
+      },
+      {
+        "name": "Carvão Vegetal 3kg",
+        "price": "17,90",
+        "unit": "UN"
+      },
+      {
+        "name": "Refrigerante Cola 2L",
+        "price": "10,99",
+        "unit": "UN"
+      },
+      {
+        "name": "Pão Francês",
+        "price": "16,90",
+        "unit": "KG"
+      },
+      {
+        "name": "Queijo Mussarela Fatiado",
+        "price": "49,90",
+        "unit": "KG"
+      }
+    ]
+  },
   "tour": {
     "eyebrow": "Percurso completo",
     "title": "Um dia de loja no Movix, tela por tela",

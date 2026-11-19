@@ -96,7 +96,8 @@ const LABELS = {
   imageAlt: 'Descrição da imagem (Google e leitores de tela)', alt: 'Descrição da imagem (Google e leitores de tela)', imageLabel: 'Rótulo da moldura',
   value: 'Valor', label: 'Rótulo', eyebrow: 'Placa da seção', intro: 'Introdução', steps: 'Paradas do percurso', id: 'Âncora (sem espaços)',
   key: 'Tecla', exit: 'Placa', text: 'Texto', ticks: 'Itens (use **negrito**)', items: 'Itens', caption: 'Legenda', price: 'Preço', period: 'Período',
-  note: 'Observação', featured: 'Destacar este plano', tag: 'Selo', q: 'Pergunta', a: 'Resposta', left: 'Texto à esquerda', right: 'Texto à direita',
+  note: 'Observação', customer: 'Cliente do fiado (exemplo)', customerDebt: 'Quanto ele já deve (ex.: 139,47)', customerLimit: 'Limite de fiado dele (ex.: 300,00)',
+  products: 'Produtos', unit: 'Unidade (UN ou KG)', featured: 'Destacar este plano', tag: 'Selo', q: 'Pergunta', a: 'Resposta', left: 'Texto à esquerda', right: 'Texto à direita',
 };
 const LIMITS = { title: 65, description: 160, shareTitle: 70, shareDescription: 200, imageAlt: 160, alt: 160 };
 const LONG = new Set(['description', 'lead', 'text', 'intro', 'note', 'a', 'shareDescription', 'keywords']);
@@ -105,6 +106,7 @@ const TABS = [
   ['contact', 'Contato', 'Todos os botões do site abrem o WhatsApp com a mensagem escolhida.'],
   ['hero', 'Topo', 'A primeira coisa que o visitante vê.'],
   ['strip', 'Faixa de números', 'Quatro destaques curtos logo abaixo do topo.'],
+  ['demo', 'Caixa de teste', 'A simulação interativa de venda. Unidade UN soma 1 por clique; KG soma 0,250 kg (como na balança). Preços de exemplo, com vírgula.'],
   ['tour', 'Percurso (rolagem)', 'Cada parada troca a tela na moldura enquanto a pessoa rola a página.'],
   ['gallery', 'Mais telas', ''],
   ['security', 'Segurança', ''],
@@ -184,13 +186,23 @@ function imageField(parent, key) {
   file.addEventListener('change', async () => {
     const f = file.files[0];
     if (!f) return;
-    if (f.size > 2 * 1024 * 1024) { alertMsg('Imagem acima de 2 MB. Use WebP ou JPG menor (o site carrega mais rápido).'); file.value = ''; return; }
-    const ext = { 'image/webp': 'webp', 'image/png': 'png', 'image/jpeg': 'jpg' }[f.type];
-    if (!ext) { alertMsg('Use uma imagem WebP, PNG ou JPG.'); return; }
-    const slug = f.name.replace(/\.[^.]+$/, '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'imagem';
-    const path = `img/${slug}-${Date.now().toString(36)}.${ext}`;
-    const base64 = await new Promise((ok, fail) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = fail; r.readAsDataURL(f); });
-    uploads.set(path, { base64, url: URL.createObjectURL(f) });
+    if (f.size > 8 * 1024 * 1024) { alertMsg('Imagem acima de 8 MB. Escolha um arquivo menor.'); file.value = ''; return; }
+    if (!/^image\/(webp|png|jpeg)$/.test(f.type)) { alertMsg('Use uma imagem WebP, PNG ou JPG.'); return; }
+    const slug = f.name.replace(/\.[^.]+$/, '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'imagem';
+    const path = `img/${slug}-${Date.now().toString(36)}.webp`;
+    // Converte para WebP e cria a versão de 720 px (celular), que o site usa no srcset
+    const bmp = await createImageBitmap(f);
+    const toWebp = (w) => new Promise((ok) => {
+      const scale = Math.min(1, w / bmp.width);
+      const c = document.createElement('canvas');
+      c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+      c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+      c.toBlob((b) => ok(b), 'image/webp', 0.84);
+    });
+    const b64 = (blob) => new Promise((ok, fail) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = fail; r.readAsDataURL(blob); });
+    const full = await toWebp(1440), small = await toWebp(720);
+    uploads.set(path, { base64: await b64(full), url: URL.createObjectURL(full) });
+    uploads.set(path.replace(/\.webp$/, '-720.webp'), { base64: await b64(small), url: URL.createObjectURL(small) });
     parent[key] = path; markDirty(); show(); pathInfo.textContent = path;
   });
   const pathInfo = el('small', { text: parent[key] });
