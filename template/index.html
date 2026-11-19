@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- SITE:HEAD-START -->
+<title>{{site.title}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{{site.description}}">
+<meta name="keywords" content="{{site.keywords}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="{{site.company}}">
+<meta name="theme-color" content="#0E5A3A">
+{{#site.googleVerification}}<meta name="google-site-verification" content="{{site.googleVerification}}">
+{{/site.googleVerification}}<link rel="canonical" href="{{site.url}}">
+<link rel="icon" href="img/movix-icone.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="preload" href="fonts/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{hero.image}}" as="image" fetchpriority="high">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{{site.name}}">
+<meta property="og:title" content="{{site.shareTitle}}">
+<meta property="og:description" content="{{site.shareDescription}}">
+<meta property="og:url" content="{{site.url}}">
+<meta property="og:image" content="{{site.shareImageAbs}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{hero.imageAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{{{jsonld}}}
+</script>
+<style>
+/* Layout: placas de rodovia em fundo claro; cada seção é uma "saída" com a tecla de atalho real do Movix. */
+@font-face { font-family: "Overpass"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("fonts/overpass-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Overpass"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("fonts/overpass-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root {
+  --ground: #ECF0EE; --surface: #FFFFFF; --surface-muted: #E2E8E4;
+  --ink: #14191B; --muted: #46514C; --dim: #5B6761; --line: #C6CFCA;
+  --sign: #0E5A3A; --sign-deep: #0A472E; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
+  --yellow: #F2C200; --on-yellow: #14191B; --red: #B3261E; --link: #0E5A3A;
+  --shadow: 0 1px 0 rgba(20,25,27,.06), 0 18px 40px -24px rgba(10,71,46,.45);
+  --font: "Overpass", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --step--1: .875rem; --step-0: 1.0625rem; --step-1: 1.3rem; --step-2: 1.75rem; --step-3: clamp(2.1rem, 4.4vw, 3.4rem);
+  --radius: 10px; --wrap: 1180px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #111517; --surface: #1A1F21; --surface-muted: #252C2F;
+  --ink: #EEF2EF; --muted: #B3BDB8; --dim: #9AA5A0; --line: #343D41;
+  --sign: #0F5C3B; --sign-deep: #0C4430; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
+  --yellow: #F2C200; --on-yellow: #14191B; --red: #F27B70; --link: #6FD3A2;
+  --shadow: 0 1px 0 rgba(0,0,0,.4), 0 18px 40px -24px rgba(0,0,0,.8); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --ground: #111517; --surface: #1A1F21; --surface-muted: #252C2F;
+  --ink: #EEF2EF; --muted: #B3BDB8; --dim: #9AA5A0; --line: #343D41;
+  --sign: #0F5C3B; --sign-deep: #0C4430; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
+  --yellow: #F2C200; --on-yellow: #14191B; --red: #F27B70; --link: #6FD3A2;
+  --shadow: 0 1px 0 rgba(0,0,0,.4), 0 18px 40px -24px rgba(0,0,0,.8); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--font); font-size: var(--step-0); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { line-height: 1.12; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+p { margin: 0; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Placa: verde com filete branco interno, como as placas do DNIT */
+.plate { background: var(--sign); color: var(--on-sign); border-radius: var(--radius); position: relative; }
+.plate::after { content: ""; position: absolute; inset: 5px; border: 2px solid rgba(255,255,255,.92); border-radius: calc(var(--radius) - 4px); pointer-events: none; }
+
+/* Topo */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sign-deep); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--sign-deep); color: var(--on-sign); }
+.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--on-sign); text-decoration: none; font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; }
+.brand svg { width: 34px; height: 34px; }
+.brand small { font-weight: 600; font-size: .78rem; color: var(--on-sign-muted); letter-spacing: .02em; }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a { color: var(--on-sign); text-decoration: none; font-weight: 700; font-size: .95rem; padding: 6px 10px; border-radius: 6px; }
+.nav a:hover { background: rgba(255,255,255,.12); }
+.nav a.cta { background: var(--yellow); color: var(--on-yellow); }
+@media (max-width: 760px) { .nav a:not(.cta) { display: none; } }
+.brand, .nav a { white-space: nowrap; }
+@media (max-width: 560px) { .brand small { display: none; } .nav a.cta { font-size: .9rem; padding: 7px 10px; } .top .wrap { gap: 10px; } }
+
+/* Hero */
+.hero { padding-block: 44px 24px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: center; }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero-sign { padding: 30px 30px 28px; display: grid; gap: 18px; }
+.hero-sign .route { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; color: var(--on-sign-muted); }
+.shield { display: inline-grid; place-items: center; min-width: 2.2em; height: 2.2em; padding: 0 .5em; background: var(--on-sign); color: var(--sign); border-radius: 6px; font-weight: 900; letter-spacing: 0; }
+.hero h1 { font-size: var(--step-3); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--yellow); }
+.hero .lead { font-size: 1.15rem; color: var(--on-sign-muted); max-width: 46ch; }
+.hero .actions { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1rem; border: 2px solid transparent; }
+.btn-yellow { background: var(--yellow); color: var(--on-yellow); }
+.btn-yellow:hover { filter: brightness(1.06); }
+.btn-ghost { color: var(--on-sign); border-color: rgba(255,255,255,.7); }
+.btn-ghost:hover { background: rgba(255,255,255,.1); }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: var(--step--1); font-weight: 700; color: var(--on-sign); position: relative; z-index: 1; }
+.hero-facts span::before { content: "✓ "; color: var(--yellow); }
+
+.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+.shot .bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--surface-muted); border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 700; color: var(--dim); }
+.shot .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: inline-block; }
+.shot .bar b { margin-left: 6px; font-weight: 700; }
+.shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; }
+
+/* Faixa de números */
+.strip { padding-block: 18px 6px; }
+.strip ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 760px) { .strip ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.strip li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 2px; }
+.strip strong { font-size: 1.35rem; font-weight: 800; }
+.strip span { color: var(--muted); font-size: var(--step--1); }
+
+/* Seções "saída" */
+section { padding-block: 56px; }
+.exit-head { display: grid; gap: 12px; margin-bottom: 26px; max-width: 760px; }
+.exit { display: inline-flex; align-items: center; gap: 8px; width: fit-content; background: var(--yellow); color: var(--on-yellow); font-weight: 900; font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px 3px; border-radius: 5px; border: 2px solid var(--on-yellow); }
+.exit kbd { font: inherit; background: var(--on-yellow); color: var(--yellow); border-radius: 3px; padding: 0 6px; }
+.exit-head h2 { font-size: var(--step-2); font-weight: 800; }
+.exit-head p { color: var(--muted); font-size: 1.1rem; max-width: 62ch; }
+
+.feature { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 36px; align-items: center; }
+.feature.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
+.feature.flip .feature-text { order: 2; }
+@media (max-width: 960px) { .feature, .feature.flip { grid-template-columns: 1fr; } .feature.flip .feature-text { order: 0; } }
+.feature-text { display: grid; gap: 16px; min-width: 0; }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; }
+.ticks li::before { content: ""; width: 22px; height: 22px; margin-top: 2px; border-radius: 5px; background: var(--sign) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+.ticks b { font-weight: 800; }
+.alt { background: var(--surface); border-block: 1px solid var(--line); }
+
+/* Grade de telas */
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 960px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .gallery { grid-template-columns: 1fr; } }
+.gallery figure { margin: 0; display: grid; gap: 8px; }
+.gallery figcaption { font-weight: 700; font-size: var(--step--1); color: var(--muted); }
+
+/* Segurança */
+.guard-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .guard-grid { grid-template-columns: 1fr; } }
+.guard { border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: var(--ground); display: grid; gap: 8px; align-content: start; }
+.guard h3 { font-size: var(--step-1); font-weight: 800; }
+.guard p { color: var(--muted); }
+
+/* Para quem */
+.who { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 860px) { .who { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.who div { padding: 18px 18px 16px; display: grid; gap: 4px; }
+.who h3 { font-size: 1.1rem; font-weight: 800; position: relative; z-index: 1; }
+.who p { font-size: var(--step--1); color: var(--on-sign-muted); position: relative; z-index: 1; }
+
+/* Preços */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+@media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 14px; align-content: start; }
+.plan.best { border: 3px solid var(--sign); }
+.plan .tag { justify-self: start; font-size: .75rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; background: var(--yellow); color: var(--on-yellow); padding: 3px 8px; border-radius: 4px; }
+.plan h3 { font-size: var(--step-1); font-weight: 800; }
+.price { font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; }
+.price small { font-size: 1rem; font-weight: 700; color: var(--muted); letter-spacing: 0; }
+.plan p { color: var(--muted); }
+.plan .btn { justify-content: center; background: var(--sign); color: var(--on-sign); }
+.plan .btn:hover { background: var(--sign-deep); }
+
+/* Perguntas */
+.faq { display: grid; gap: 10px; max-width: 860px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 18px; }
+.faq summary { cursor: pointer; font-weight: 800; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--sign); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding-bottom: 16px; color: var(--muted); max-width: 70ch; }
+
+/* Chamada final e rodapé */
+.final { padding-block: 64px; }
+.final .plate { padding: 36px 32px; display: grid; gap: 16px; justify-items: start; }
+.final h2 { font-size: var(--step-2); font-weight: 800; position: relative; z-index: 1; }
+.final p { color: var(--on-sign-muted); max-width: 56ch; position: relative; z-index: 1; }
+.final .actions { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
+.phone { font-weight: 800; color: var(--on-sign); font-size: 1.2rem; user-select: all; }
+footer { padding-block: 28px 40px; color: var(--dim); font-size: var(--step--1); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+/* ---------- Movimento ao rolar ---------- */
+/* Faixa amarela tracejada (como a faixa central da pista) que avança com a leitura */
+.lane { position: fixed; z-index: 11; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 4px; pointer-events: none; }
+.lane span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(var(--read, 0));
+  background: repeating-linear-gradient(90deg, var(--yellow) 0 22px, transparent 22px 34px); }
+
+/* Print do topo: começa inclinado em perspectiva e se endireita conforme a página desce */
+.hero-stage { perspective: 1600px; }
+.hero-shot { transform-origin: 30% 50%; transform: rotateY(calc(-11deg * (1 - var(--hero, 0)))) rotateX(calc(5deg * (1 - var(--hero, 0)))) translateY(calc(-14px * var(--hero, 0))); will-change: transform; }
+
+/* Blocos sobem levemente ao entrar na tela (sempre visíveis; só o deslocamento anima) */
+.motion .reveal { transform: translateY(26px); opacity: .55; transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .7s ease; }
+.motion .reveal.seen { transform: none; opacity: 1; }
+.motion .gallery .reveal:nth-child(2), .motion .guard-grid .reveal:nth-child(3n+2), .motion .who .reveal:nth-child(2), .motion .plans .reveal:nth-child(2) { transition-delay: .08s; }
+.motion .gallery .reveal:nth-child(3), .motion .guard-grid .reveal:nth-child(3n), .motion .who .reveal:nth-child(3), .motion .plans .reveal:nth-child(3) { transition-delay: .16s; }
+.motion .who .reveal:nth-child(4) { transition-delay: .24s; }
+
+/* ---------- Percurso: moldura fixa que troca de tela conforme a leitura ---------- */
+.tour-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+.tour-steps { display: grid; gap: 0; }
+.step { display: grid; gap: 14px; min-width: 0; padding-block: 18px 42px; }
+.step h3 { font-size: var(--step-2); font-weight: 800; }
+.step > p { color: var(--muted); font-size: 1.1rem; }
+.tour-stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 92px); display: grid; gap: 14px; }
+.stage-frame { transform: perspective(1600px) rotateY(-4deg); transform-origin: 0 50%; transition: transform .6s ease; }
+.stage-frame:hover { transform: none; }
+.stage-imgs { position: relative; aspect-ratio: 16 / 10; background: var(--surface-muted); }
+.stage-imgs img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transform: scale(1.025); transition: opacity .55s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.stage-imgs img.on { opacity: 1; transform: none; }
+.stage-count { margin-left: auto; color: var(--dim); font-weight: 800; }
+.stage-dots { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.stage-dots li { flex: 1 1 0; min-width: 18px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.stage-dots li a { display: block; width: 100%; height: 100%; font-size: 0; color: transparent; }
+.stage-dots li.on { background: var(--sign); }
+.motion .step { opacity: .42; transition: opacity .45s ease; }
+.motion .step.is-active { opacity: 1; }
+.motion .step.is-active .exit { box-shadow: 0 0 0 4px color-mix(in srgb, var(--yellow) 35%, transparent); }
+.step-shot { display: none; margin: 0; }
+@media (min-width: 961px) { .step { min-height: 72vh; align-content: center; } }
+@media (max-width: 960px) {
+  .tour-grid { grid-template-columns: 1fr; }
+  .tour-stage { display: none; }
+  .step-shot { display: block; }
+  .motion .step { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-shot, .stage-frame { transform: none !important; }
+  .motion .reveal { transform: none; opacity: 1; }
+  .stage-imgs img { transition: none; }
+}
+.gallery figure { margin: 0; }
+
+</style>
+<!-- SITE:HEAD-END -->
+</head>
+<body>
+<!-- SITE:BODY-START -->
+<div class="lane" aria-hidden="true"><span></span></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="{{site.name}}, início">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="26" fill="#FFFFFF"/><path d="M26 72 V32 L50 56 L74 32 V52" fill="none" stroke="#0E5A3A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="71" r="7" fill="#FFC23D"/></svg>
+      <span>movix <small>by brantec</small></span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#percurso">Percurso</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="#planos">Planos</a>
+      <a href="#perguntas">Dúvidas</a>
+      <a class="cta" href="{{contact.link}}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="plate hero-sign">
+        <span class="route"><span class="shield">PDV</span> {{hero.route}}</span>
+        <h1>{{hero.titleBefore}} <em>{{hero.titleHighlight}}</em> {{hero.titleAfter}}</h1>
+        <p class="lead">{{hero.lead}}</p>
+        <div class="actions">
+          <a class="btn btn-yellow" href="{{hero.link}}" target="_blank" rel="noopener">{{hero.cta}}</a>
+          <a class="btn btn-ghost" href="#percurso">Ver o percurso</a>
+        </div>
+        <p class="hero-facts">{{#hero.facts}}<span>{{.}}</span>{{/hero.facts}}</p>
+      </div>
+      <div class="hero-stage">
+        <div class="shot hero-shot">
+          <div class="bar"><i></i><i></i><i></i><b>{{hero.imageLabel}}</b></div>
+          <img src="{{hero.image}}" width="1440" height="900" fetchpriority="high" alt="{{hero.imageAlt}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        {{#strip}}<li class="reveal"><strong>{{value}}</strong><span>{{label}}</span></li>
+        {{/strip}}
+      </ul>
+    </div>
+  </div>
+
+  <section id="percurso" class="tour" aria-labelledby="t-tour">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{tour.eyebrow}}</span>
+        <h2 id="t-tour">{{tour.title}}</h2>
+        <p>{{tour.intro}}</p>
+      </div>
+      <div class="tour-grid">
+        <div class="tour-steps">
+          {{#tour.steps}}<article class="step" id="{{id}}" data-step="{{index}}" aria-labelledby="t-{{id}}">
+            <span class="exit"><kbd>{{key}}</kbd> {{exit}}</span>
+            <h3 id="t-{{id}}">{{title}}</h3>
+            <p>{{text}}</p>
+            <ul class="ticks">{{{ticksHtml}}}</ul>
+            <figure class="shot step-shot"><img src="{{image}}" width="1440" height="900" loading="lazy" alt="{{alt}}"></figure>
+          </article>
+          {{/tour.steps}}
+        </div>
+        <div class="tour-stage" aria-hidden="true">
+          <div class="shot stage-frame">
+            <div class="bar"><i></i><i></i><i></i><b class="stage-label">{{tour.firstLabel}}</b><span class="stage-count num"><span class="stage-n">1</span> / {{tour.count}}</span></div>
+            <div class="stage-imgs">
+              {{#tour.steps}}<img src="{{image}}" width="1440" height="900" alt="" data-label="{{label}}" loading="lazy"{{#first}} class="on"{{/first}}>
+              {{/tour.steps}}
+            </div>
+          </div>
+          <ol class="stage-dots">{{#tour.steps}}<li{{#first}} class="on"{{/first}}><a href="#{{id}}" tabindex="-1">{{label}}</a></li>{{/tour.steps}}</ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="telas" class="alt" aria-labelledby="t-telas">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{gallery.eyebrow}}</span>
+        <h2 id="t-telas">{{gallery.title}}</h2>
+        <p>{{gallery.intro}}</p>
+      </div>
+      <div class="gallery">
+        {{#gallery.items}}<figure class="reveal"><div class="shot"><img src="{{image}}" width="1440" height="900" loading="lazy" alt="{{alt}}"></div><figcaption>{{caption}}</figcaption></figure>
+        {{/gallery.items}}
+      </div>
+    </div>
+  </section>
+
+  <section id="seguranca" aria-labelledby="t-seg">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{security.eyebrow}}</span>
+        <h2 id="t-seg">{{security.title}}</h2>
+        <p>{{security.intro}}</p>
+      </div>
+      <div class="guard-grid">
+        {{#security.items}}<div class="guard reveal"><h3>{{title}}</h3><p>{{text}}</p></div>
+        {{/security.items}}
+      </div>
+    </div>
+  </section>
+
+  <section id="para-quem" class="alt" aria-labelledby="t-quem">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{audiences.eyebrow}}</span>
+        <h2 id="t-quem">{{audiences.title}}</h2>
+      </div>
+      <div class="who">
+        {{#audiences.items}}<div class="plate reveal"><h3>{{title}}</h3><p>{{text}}</p></div>
+        {{/audiences.items}}
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" aria-labelledby="t-planos">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{plans.eyebrow}}</span>
+        <h2 id="t-planos">{{plans.title}}</h2>
+        <p>{{plans.intro}}</p>
+      </div>
+      <div class="plans">
+        {{#plans.items}}<div class="plan reveal{{#featured}} best{{/featured}}">
+          {{#tag}}<span class="tag">{{tag}}</span>{{/tag}}
+          <h3>{{name}}</h3>
+          <p class="price num">{{price}}<small> {{period}}</small></p>
+          <p>{{note}}</p>
+          <a class="btn" href="{{link}}" target="_blank" rel="noopener">{{cta}}</a>
+        </div>
+        {{/plans.items}}
+      </div>
+    </div>
+  </section>
+
+  <section id="perguntas" class="alt" aria-labelledby="t-faq">
+    <div class="wrap">
+      <div class="exit-head">
+        <span class="exit">{{faq.eyebrow}}</span>
+        <h2 id="t-faq">{{faq.title}}</h2>
+      </div>
+      <div class="faq">
+        {{#faq.items}}<details{{#open}} open{{/open}}><summary>{{q}}</summary><p>{{a}}</p></details>
+        {{/faq.items}}
+      </div>
+    </div>
+  </section>
+
+  <div class="final">
+    <div class="wrap">
+      <div class="plate reveal">
+        <h2>{{final.title}}</h2>
+        <p>{{final.text}}</p>
+        <div class="actions">
+          <a class="btn btn-yellow" href="{{contact.link}}" target="_blank" rel="noopener">{{final.cta}}</a>
+          <span class="phone num">{{contact.phoneDisplay}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>{{footer.left}}</span>
+    <span>{{footer.right}}</span>
+  </div>
+</footer>
+<script>
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  // Faixa de leitura e inclinação do print do topo
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var max = root.scrollHeight - window.innerHeight;
+      var y = window.scrollY || root.scrollTop;
+      root.style.setProperty('--read', max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+      if (!reduce) root.style.setProperty('--hero', Math.min(1, y / 420).toFixed(4));
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (!hasIO || reduce) return;
+  root.classList.add('motion');
+
+  // Revelação suave: o que já está na tela aparece na hora; o resto ao entrar
+  var reveals = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  reveals.forEach(function (el) {
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight) el.classList.add('seen'); else io.observe(el);
+  });
+  // Segurança: nada fica meio apagado se a pessoa pular direto para o fim da página
+  setTimeout(function () { reveals.forEach(function (el) { el.classList.add('seen'); }); }, 4000);
+
+  // Percurso: a parada no meio da tela define qual tela real aparece na moldura
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var imgs = document.querySelectorAll('.stage-imgs img');
+  var dots = document.querySelectorAll('.stage-dots li');
+  var label = document.querySelector('.stage-label');
+  var num = document.querySelector('.stage-n');
+  var current = -1;
+  function activate(i) {
+    if (i === current || i < 0) return;
+    current = i;
+    steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+    imgs.forEach(function (im, k) { im.classList.toggle('on', k === i); });
+    dots.forEach(function (d, k) { d.classList.toggle('on', k <= i); });
+    if (label && imgs[i]) label.textContent = imgs[i].getAttribute('data-label');
+    if (num) num.textContent = String(i + 1);
+    // pré-carrega a próxima tela para a troca ficar instantânea
+    if (imgs[i + 1]) imgs[i + 1].loading = 'eager';
+  }
+  var stepIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) activate(Number(e.target.getAttribute('data-step'))); });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach(function (s) { stepIO.observe(s); });
+  activate(0);
+})();
+
+</script>
+<!-- SITE:BODY-END -->
+</body>
+</html>

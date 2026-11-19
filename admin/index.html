@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<!-- Só fala com a API do GitHub; nenhum script de terceiros; a chave nunca sai para outro endereço. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' https:; connect-src https://api.github.com; frame-src 'self' about: blob:; base-uri 'self'; form-action 'none'; object-src 'none'">
+<title>Movix Site · Painel</title>
+<link rel="icon" href="../img/movix-icone.svg" type="image/svg+xml">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="adm-top">
+  <div class="adm-brand">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="26" fill="#FFFFFF"/><path d="M26 72 V32 L50 56 L74 32 V52" fill="none" stroke="#0E5A3A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="71" r="7" fill="#FFC23D"/></svg>
+    <span>Painel do site</span>
+  </div>
+  <div class="adm-actions" id="top-actions" hidden>
+    <span class="dirty" id="dirty" hidden>Alterações não publicadas</span>
+    <a class="b ghost" id="link-site" href="../" target="_blank" rel="noopener">Ver site</a>
+    <button class="b ghost" id="btn-preview" type="button">Pré-visualizar</button>
+    <button class="b yellow" id="btn-publish" type="button">Publicar</button>
+    <button class="b ghost" id="btn-logout" type="button">Sair</button>
+  </div>
+</header>
+
+<main>
+  <section id="login" class="card login">
+    <h1>Entrar no painel</h1>
+    <p>O acesso usa uma <b>chave do GitHub</b> que só pode alterar o repositório do site. Ela fica guardada apenas neste navegador e só é enviada para <code>api.github.com</code>.</p>
+    <details>
+      <summary>Como criar a chave (uma vez só)</summary>
+      <ol>
+        <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+        <li>Nome: <i>Painel do site Movix</i>. Validade: até 1 ano.</li>
+        <li>Em <b>Repository access</b>, escolha <i>Only select repositories</i> e marque <b id="repo-name-hint">movix-site</b>.</li>
+        <li>Em <b>Permissions</b>: <i>Contents</i> = Read and write; <i>Pages</i> = Read-only.</li>
+        <li>Clique em <b>Generate token</b> e cole a chave abaixo.</li>
+      </ol>
+    </details>
+    <form id="login-form" autocomplete="off">
+      <label for="token">Chave de acesso</label>
+      <input id="token" type="password" placeholder="github_pat_…" spellcheck="false" required>
+      <label class="check"><input id="remember" type="checkbox"> Lembrar neste computador</label>
+      <button class="b green" type="submit">Entrar</button>
+      <p class="msg" id="login-msg" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="app" hidden>
+    <nav class="tabs" id="tabs" aria-label="Seções do site"></nav>
+    <div class="panel">
+      <div class="errors" id="errors" role="alert" hidden></div>
+      <div id="editor"></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="preview-dlg">
+  <div class="dlg-bar">
+    <b>Pré-visualização (sem animações)</b>
+    <span class="sp"></span>
+    <button class="b ghost" type="button" data-w="390">Celular</button>
+    <button class="b ghost" type="button" data-w="1280">Computador</button>
+    <button class="b green" type="button" id="close-preview">Fechar</button>
+  </div>
+  <iframe id="preview-frame" title="Pré-visualização do site" sandbox=""></iframe>
+</dialog>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>

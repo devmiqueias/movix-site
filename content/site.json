@@ -1,0 +1,150 @@
+{
+  "site": {
+    "url": "https://devmiqueias.github.io/movix-site/",
+    "name": "Movix PDV",
+    "title": "Movix PDV — Sistema de caixa para mercadinho, distribuidora de bebidas e conveniência",
+    "description": "Movix é o sistema PDV de frente de caixa que funciona sem internet: vendas com leitor de código de barras e balança, PIX, cartão, controle de fiado com limite, estoque, pedidos para entrega e fechamento de caixa. Feito para mercadinho, distribuidora de bebidas, depósito e conveniência.",
+    "keywords": "sistema PDV, sistema para mercadinho, sistema para distribuidora de bebidas, sistema para depósito de bebidas, programa de caixa, frente de caixa, sistema de caixa offline, controle de fiado, caderneta de fiado digital, controle de estoque, PDV com balança, sistema para loja de conveniência, sistema para mercearia, sistema para adega, fechamento de caixa, Movix",
+    "shareTitle": "Movix PDV — o caixa do seu mercadinho funcionando até sem internet",
+    "shareDescription": "Frente de caixa, fiado com limite, estoque, pedidos e fechamento de caixa num só sistema. Funciona offline, no seu computador.",
+    "shareImage": "img/movix-og.jpg",
+    "googleVerification": "",
+    "company": "Brantec"
+  },
+  "contact": {
+    "whatsapp": "5573974007373",
+    "phoneDisplay": "(73) 97400-7373",
+    "message": "Quero conhecer o Movix"
+  },
+  "hero": {
+    "route": "Sistema de caixa para o comércio de bairro",
+    "titleBefore": "O caixa do seu",
+    "titleHighlight": "mercadinho",
+    "titleAfter": "vendendo rápido, até sem internet.",
+    "lead": "Movix é o sistema PDV que junta frente de caixa, fiado, estoque, pedidos e fechamento de caixa. Instala no computador da loja e funciona offline.",
+    "cta": "Agendar demonstração",
+    "ctaMessage": "Quero uma demonstração do Movix",
+    "facts": ["Leitor e balança", "PIX e cartão", "Fiado com limite"],
+    "image": "img/movix-pdv-frente-de-caixa.webp",
+    "imageAlt": "Frente de caixa do Movix PDV: catálogo de produtos por categoria, carrinho com cerveja, gelo e carvão e total da venda em destaque",
+    "imageLabel": "Movix · Caixa (F2)"
+  },
+  "strip": [
+    {"value": "100% offline", "label": "vende com a internet fora do ar"},
+    {"value": "F1 a F10", "label": "cada tela num atalho de teclado"},
+    {"value": "5 formas", "label": "PIX, dinheiro, débito, crédito e fiado"},
+    {"value": "Backup diário", "label": "com cópia para pendrive ou nuvem"}
+  ],
+  "tour": {
+    "eyebrow": "Percurso completo",
+    "title": "Um dia de loja no Movix, tela por tela",
+    "intro": "Role a página: cada parada mostra uma tela real do sistema, na ordem em que o caixa usa.",
+    "steps": [
+      {"id": "caixa", "key": "F2", "exit": "Saída Caixa", "title": "Frente de caixa feita para fila de sábado",
+       "text": "Bipe o código de barras, digite parte do nome ou toque no produto. O total aparece grande e a venda fecha com F9.",
+       "ticks": ["**Leitor de código de barras e balança**: frios e pão francês entram pelo peso ou pela etiqueta da balança.", "**Venda sai do estoque na hora** e o sistema avisa quando um item acaba no meio da venda."],
+       "image": "img/movix-pdv-frente-de-caixa.webp", "label": "Caixa (F2)",
+       "alt": "Frente de caixa do Movix PDV com catálogo de produtos, carrinho de venda e total em destaque"},
+      {"id": "pagamento", "key": "F9", "exit": "Saída Pagamento", "title": "PIX, dinheiro, cartão e fiado na mesma tela",
+       "text": "Escolha a forma de pagamento, digite o valor recebido e o troco aparece na hora.",
+       "ticks": ["**Cinco formas de pagamento**: PIX, dinheiro com troco, débito, crédito e fiado.", "**Comprovante** impresso ou em PDF com os dados da sua empresa."],
+       "image": "img/movix-pagamento-pix-dinheiro-cartao-fiado.webp", "label": "Pagamento (F9)",
+       "alt": "Tela de pagamento do sistema PDV Movix com PIX, dinheiro, débito, crédito e fiado, valor recebido e troco"},
+      {"id": "fiado", "key": "F10", "exit": "Saída Clientes", "title": "Controle de fiado sem caderneta",
+       "text": "Cada cliente tem limite, extrato e botão de receber. Você vê quem deve, quanto deve e desde quando.",
+       "ticks": ["**Limite por cliente**: o caixa não passa do combinado sem a senha do administrador.", "**Recebimento em dinheiro, PIX ou cartão**, que entra direto no caixa do dia."],
+       "image": "img/movix-clientes-fiado.webp", "label": "Clientes (F10)",
+       "alt": "Controle de fiado no Movix: lista de clientes com limite de crédito, saldo devedor e botões de receber e extrato"},
+      {"id": "extrato", "key": "F10", "exit": "Extrato do fiado", "title": "Cada compra e cada pagamento, em ordem",
+       "text": "O extrato mostra a venda de origem, quem atendeu e o saldo atualizado. Acabou a discussão no balcão.",
+       "ticks": ["**Código da venda** em cada compra a prazo.", "**Pagamento parcial** com observação."],
+       "image": "img/movix-extrato-do-fiado.webp", "label": "Extrato do fiado",
+       "alt": "Extrato do fiado de um cliente no Movix com compras a prazo e pagamento recebido"},
+      {"id": "estoque", "key": "F6", "exit": "Saída Estoque", "title": "Estoque que avisa antes de faltar",
+       "text": "Saiba quanto dinheiro está parado na prateleira, a margem de cada produto e o que repor hoje.",
+       "ticks": ["**Alerta de reposição** com estoque mínimo por produto.", "**Custo, venda e margem** lado a lado, com local: gôndola, freezer ou depósito."],
+       "image": "img/movix-controle-de-estoque.webp", "label": "Estoque (F6)",
+       "alt": "Controle de estoque do Movix com patrimônio em estoque, margem, nível de estoque por produto e alertas de reposição"},
+      {"id": "painel", "key": "F1", "exit": "Saída Painel", "title": "Lucro de verdade, não só faturamento",
+       "text": "Receita, custo das mercadorias e lucro do dia, da semana ou do mês, com gráficos por categoria e forma de pagamento.",
+       "ticks": ["**DRE simplificado**: do faturamento bruto ao lucro líquido.", "**Mais vendidos e mais lucrativos** do período."],
+       "image": "img/movix-graficos-vendas-dre.webp", "label": "Dashboard (F1)",
+       "alt": "Dashboard do Movix com evolução do faturamento, vendas por categoria, formas de pagamento e demonstrativo de resultado (DRE)"},
+      {"id": "pedidos", "key": "F3", "exit": "Saída Pedidos", "title": "Pedidos para mesa e entrega",
+       "text": "Lance o pedido da mesa ou da entrega, acompanhe o que está aberto e cobre no caixa quando o cliente pagar.",
+       "ticks": ["**Pedidos abertos** com total e itens à vista.", "**Cobrança no caixa** com um clique, inclusive no fiado."],
+       "image": "img/movix-pedidos-comandas-entrega.webp", "label": "Pedidos (F3)",
+       "alt": "Pedidos do Movix para mesa e entrega, com total e botão de cobrar no caixa"},
+      {"id": "fechamento", "key": "F2", "exit": "Fechamento de caixa", "title": "Turno fechado sem diferença",
+       "text": "Abertura com fundo de troco, sangria, suprimento e recebimentos de fiado: o sistema diz quanto dinheiro deve estar na gaveta.",
+       "ticks": ["**Vendas por forma de pagamento** no turno.", "**Histórico de caixas** para o administrador conferir."],
+       "image": "img/movix-fechamento-de-caixa.webp", "label": "Caixa · fechamento",
+       "alt": "Fechamento de caixa do Movix com fundo de troco, vendas por forma de pagamento, sangria e suprimento"}
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Todas as saídas",
+    "title": "Mais telas reais do Movix",
+    "intro": "Imagens do sistema funcionando numa loja de demonstração, sem montagem.",
+    "items": [
+      {"image": "img/movix-dashboard-lucro-faturamento.webp", "caption": "Painel (F1): receita, custo e lucro do período", "alt": "Indicadores do Movix: receita bruta, custo das mercadorias, lucro bruto e produtos mais vendidos"},
+      {"image": "img/movix-movimentacoes-vendas.webp", "caption": "Movimentações (F4): toda venda com lucro e forma de pagamento", "alt": "Movimentações do Movix com todas as vendas, forma de pagamento, valor líquido e lucro de cada uma"},
+      {"image": "img/movix-pdv-frente-de-caixa.webp", "caption": "Caixa (F2): produtos de balança e sem estoque sinalizados", "alt": "Catálogo de produtos do PDV Movix com estoque, preço e itens vendidos por peso na balança"}
+    ]
+  },
+  "security": {
+    "eyebrow": "Pista segura",
+    "title": "Seu caixa protegido, por dentro e por fora",
+    "intro": "O Movix passa por testes de invasão antes de cada versão. As regras de segurança ficam no servidor do sistema, não só na tela.",
+    "items": [
+      {"title": "Cada um com sua senha", "text": "Administrador e operadores de caixa entram com usuário e senha. O operador não vê lucro, não muda preço e não exclui cadastro."},
+      {"title": "Senha do dono para exceções", "text": "Desconto acima do permitido, cancelamento de venda e fiado acima do limite pedem a senha do administrador, válida uma única vez."},
+      {"title": "Tela bloqueia sozinha", "text": "Saiu do balcão, a tela trava depois de alguns minutos. Cinco senhas erradas bloqueiam o usuário por um tempo."},
+      {"title": "Dados no seu computador", "text": "Vendas e clientes ficam na loja, sem depender de servidor de terceiros e sem internet para funcionar."},
+      {"title": "Backup automático", "text": "Cópia de segurança diária, com envio extra para pendrive, HD externo ou a pasta da sua nuvem."},
+      {"title": "Licença presa à máquina", "text": "A ativação é assinada digitalmente e vinculada ao computador. Copiar o programa para outro PC não funciona."}
+    ]
+  },
+  "audiences": {
+    "eyebrow": "Destinos",
+    "title": "Feito para quem vende no balcão",
+    "items": [
+      {"title": "Mercadinho e mercearia", "text": "Caixa rápido, balança, fiado da vizinhança e estoque de gôndola."},
+      {"title": "Distribuidora de bebidas", "text": "Pedidos para entrega, gelo e carvão, fiado de bares e restaurantes."},
+      {"title": "Depósito e adega", "text": "Venda em quantidade, controle de freezer e depósito, margem por produto."},
+      {"title": "Conveniência", "text": "Atendimento rápido com PIX e cartão, turnos de caixa e sangria."}
+    ]
+  },
+  "plans": {
+    "eyebrow": "Pedágio justo",
+    "title": "Planos do Movix",
+    "intro": "Instalação, ativação e suporte pela Brantec em todos os planos.",
+    "items": [
+      {"name": "Mensal", "price": "R$ 89", "period": "/mês", "note": "Para começar sem investimento alto. Adesão de R$ 197 na contratação.", "cta": "Quero o mensal", "message": "Quero o plano mensal do Movix", "featured": false, "tag": ""},
+      {"name": "Anual", "price": "R$ 890", "period": "/ano", "note": "Doze meses pelo preço de dez, sem taxa de adesão.", "cta": "Quero o anual", "message": "Quero o plano anual do Movix", "featured": true, "tag": "Mais escolhido"},
+      {"name": "Vitalícia", "price": "R$ 2.490", "period": "uma vez", "note": "Pague uma vez e use para sempre neste computador.", "cta": "Quero a vitalícia", "message": "Quero a licença vitalícia do Movix", "featured": false, "tag": ""}
+    ]
+  },
+  "faq": {
+    "eyebrow": "Informações",
+    "title": "Perguntas frequentes",
+    "items": [
+      {"q": "O Movix funciona sem internet?", "a": "Sim. O Movix roda no computador da loja e guarda os dados nele. A internet pode cair que o caixa continua vendendo, recebendo fiado e fechando o turno."},
+      {"q": "O Movix controla fiado?", "a": "Sim. Cada cliente tem limite de fiado, extrato com as compras e os pagamentos e botão de receber. Vender acima do limite ou mudar o limite exige a senha do administrador."},
+      {"q": "Funciona com balança e leitor de código de barras?", "a": "Sim. O leitor de código de barras funciona como teclado e a balança é lida pela porta serial. Produtos por quilo (frios, pão, carnes) também entram pela etiqueta da balança."},
+      {"q": "Serve para distribuidora de bebidas e depósito?", "a": "Sim. O Movix nasceu no balcão de distribuidora: pedidos para entrega, gelo e carvão, venda em quantidade, fiado de bares e restaurantes e controle de estoque por gôndola, freezer e depósito."},
+      {"q": "Meus dados ficam seguros?", "a": "Os dados ficam no seu computador, com backup automático e cópia extra para pendrive, HD externo ou pasta da nuvem. Cada pessoa entra com usuário e senha, e o operador de caixa só faz o que o administrador permitir."},
+      {"q": "Quanto custa o Movix?", "a": "Plano mensal de R$ 89, plano anual de R$ 890 ou licença vitalícia de R$ 2.490, com instalação e suporte pela Brantec."},
+      {"q": "Qual computador eu preciso?", "a": "Um computador com Windows 10 ou 11. A tela foi desenhada para monitores comuns de caixa, de 1366×768 em diante."}
+    ]
+  },
+  "final": {
+    "title": "Próxima saída: o seu caixa no Movix.",
+    "text": "Mostramos o sistema funcionando com os produtos da sua loja. Chame no WhatsApp e agende.",
+    "cta": "Chamar no WhatsApp"
+  },
+  "footer": {
+    "left": "Movix PDV · sistema de frente de caixa, fiado e estoque · desenvolvido pela Brantec",
+    "right": "Imagens: telas reais do Movix com dados de demonstração."
+  }
+}
