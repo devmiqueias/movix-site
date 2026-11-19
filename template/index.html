@@ -387,7 +387,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
         {{#plans.items}}<div class="plan reveal{{#featured}} best{{/featured}}">
           {{#tag}}<span class="tag">{{tag}}</span>{{/tag}}
           <h3>{{name}}</h3>
-          <p class="price num">{{price}}<small> {{period}}</small></p>
+          {{#price}}<p class="price num">{{price}}<small> {{period}}</small></p>{{/price}}
           <p>{{note}}</p>
           <a class="btn" href="{{link}}" target="_blank" rel="noopener">{{cta}}</a>
         </div>

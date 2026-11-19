@@ -59,7 +59,8 @@ function jsonLd(d) {
         image: absUrl(base, d.hero.image),
         screenshot: d.tour.steps.map((s) => absUrl(base, s.image)),
         featureList: d.tour.steps.map((s) => s.title).join('; '),
-        offers: d.plans.items.map((p) => ({ '@type': 'Offer', name: `Plano ${p.name}`, price: priceNumber(p.price), priceCurrency: 'BRL' })),
+        // Preço só entra nos dados do Google se estiver preenchido no painel (hoje o site não mostra valores)
+        ...(d.plans.items.some((p) => priceNumber(p.price)) ? { offers: d.plans.items.filter((p) => priceNumber(p.price)).map((p) => ({ '@type': 'Offer', name: `Plano ${p.name}`, price: priceNumber(p.price), priceCurrency: 'BRL' })) } : {}),
         publisher: { '@id': base + '#empresa' },
       },
       {

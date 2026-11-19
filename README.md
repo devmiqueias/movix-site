@@ -11,7 +11,7 @@ Abra **`/admin`** no site publicado (https://devmiqueias.github.io/movix-site/ad
 
 1. Na primeira vez, crie uma chave do GitHub restrita a este repositório (o passo a passo aparece na
    tela de entrada): *Contents: Read and write* e *Pages: Read-only*.
-2. Edite preços, WhatsApp, textos, perguntas, imagens e o SEO.
+2. Edite formatos de contratação, WhatsApp, textos, perguntas, imagens e o SEO.
 3. **Pré-visualizar** mostra o resultado antes; **Publicar** grava tudo num commit e o site é
    atualizado em cerca de 1 minuto. A aba **Publicações** mostra o status e o histórico, e permite
    reabrir uma versão anterior.
@@ -39,7 +39,7 @@ Para gerar localmente depois de mudar o modelo: `node build.mjs`.
 - Título, descrição e palavras-chave focados no nicho (sistema PDV, mercadinho, distribuidora de
   bebidas, controle de fiado, frente de caixa offline), editáveis no painel.
 - Todo o texto vai escrito no HTML (o Google lê sem executar JavaScript).
-- Dados estruturados (`SoftwareApplication` com preços, `Organization`, `FAQPage`).
+- Dados estruturados (`SoftwareApplication`, `Organization`, `FAQPage`). O site não mostra valores; se um dia um preço for preenchido no painel, ele aparece no plano e nos dados do Google.
 - `sitemap.xml` com as imagens, Open Graph para WhatsApp/Facebook, textos alternativos descritivos.
 
 **Domínio próprio (recomendado):** registre o domínio (ex.: `movix.com.br`), aponte o DNS para o

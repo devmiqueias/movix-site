@@ -109,7 +109,7 @@ const TABS = [
   ['gallery', 'Mais telas', ''],
   ['security', 'Segurança', ''],
   ['audiences', 'Para quem', ''],
-  ['plans', 'Planos e preços', 'Os preços também vão para o Google (dados estruturados).'],
+  ['plans', 'Como contratar', 'Formatos de contratação. O site não mostra valores: cada botão pede os valores no WhatsApp.'],
   ['faq', 'Perguntas', 'Aparecem no Google como perguntas frequentes.'],
   ['final', 'Chamada final', ''],
   ['footer', 'Rodapé', ''],

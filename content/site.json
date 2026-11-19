@@ -246,37 +246,31 @@
     ]
   },
   "plans": {
-    "eyebrow": "Pedágio justo",
-    "title": "Planos do Movix",
-    "intro": "Instalação, ativação e suporte pela Brantec em todos os planos.",
+    "eyebrow": "Como contratar",
+    "title": "Escolha o formato que cabe na sua loja",
+    "intro": "Mostramos o Movix funcionando com os produtos da sua loja e passamos os valores do formato ideal para você. Instalação, ativação e suporte pela Brantec em todos.",
     "items": [
       {
         "name": "Mensal",
-        "price": "R$ 89",
-        "period": "/mês",
-        "note": "Para começar sem investimento alto. Adesão de R$ 197 na contratação.",
-        "cta": "Quero o mensal",
-        "message": "Quero o plano mensal do Movix",
+        "note": "Para começar sem investimento alto e pagar mês a mês.",
+        "cta": "Pedir valores no WhatsApp",
+        "message": "Quero saber os valores do Movix no plano mensal",
         "featured": false,
         "tag": ""
       },
       {
         "name": "Anual",
-        "price": "R$ 890",
-        "period": "/ano",
-        "note": "Doze meses pelo preço de dez, sem taxa de adesão.",
-        "cta": "Quero o anual",
-        "message": "Quero o plano anual do Movix",
+        "note": "Um ano de uso com condição melhor que o mensal.",
+        "cta": "Pedir valores no WhatsApp",
+        "message": "Quero saber os valores do Movix no plano anual",
         "featured": true,
         "tag": "Mais escolhido"
       },
       {
         "name": "Vitalícia",
-        "price": "R$ 2.490",
-        "period": "uma vez",
         "note": "Pague uma vez e use para sempre neste computador.",
-        "cta": "Quero a vitalícia",
-        "message": "Quero a licença vitalícia do Movix",
+        "cta": "Pedir valores no WhatsApp",
+        "message": "Quero saber os valores da licença vitalícia do Movix",
         "featured": false,
         "tag": ""
       }
@@ -307,8 +301,8 @@
         "a": "Os dados ficam no seu computador, com backup automático e cópia extra para pendrive, HD externo ou pasta da nuvem. Cada pessoa entra com usuário e senha, e o operador de caixa só faz o que o administrador permitir."
       },
       {
-        "q": "Quanto custa o Movix?",
-        "a": "Plano mensal de R$ 89, plano anual de R$ 890 ou licença vitalícia de R$ 2.490, com instalação e suporte pela Brantec."
+        "q": "Como contratar o Movix?",
+        "a": "Você escolhe entre plano mensal, plano anual ou licença vitalícia. Chame a Brantec no WhatsApp: mostramos o sistema funcionando com os produtos da sua loja e passamos os valores do formato ideal para você."
       },
       {
         "q": "Qual computador eu preciso?",
