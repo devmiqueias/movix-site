@@ -8,6 +8,7 @@
   --sign: #16804F; --sign-deep: #0C4430; --red: #F27B70; --ok: #6FD3A2; color-scheme: dark; } }
 @font-face { font-family: "Overpass"; font-weight: 100 900; font-display: swap; src: url("../fonts/overpass-latin-wght-normal.woff2") format("woff2"); }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.5 var(--font); }
 a { color: var(--sign); }
 button, input, textarea, select { font: inherit; color: inherit; }
@@ -35,6 +36,7 @@ main { padding: 24px max(16px, 2vw) 60px; }
 .login p { margin: 0; color: var(--muted); }
 .login ol { margin: 8px 0 0; padding-left: 20px; color: var(--muted); display: grid; gap: 4px; }
 .login form { display: grid; gap: 10px; }
+.login input[type=password] { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--ground); }
 .check { display: flex; gap: 8px; align-items: center; font-weight: 600; }
 .msg { min-height: 1.2em; font-weight: 700; }
 .msg.err { color: var(--red); }

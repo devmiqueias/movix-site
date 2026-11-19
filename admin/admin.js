@@ -117,7 +117,11 @@ const TABS = [
 ];
 let currentTab = 'site';
 
-function markDirty() { dirty = true; $('#dirty').hidden = false; }
+function markDirty() {
+  dirty = true; $('#dirty').hidden = false;
+  // Aviso de erro some assim que o problema é corrigido
+  if (!$('#errors').hidden) showErrors(validate(data));
+}
 
 function renderTabs() {
   const nav = $('#tabs');
@@ -240,7 +244,10 @@ $('#btn-preview').addEventListener('click', () => {
   showErrors(errs);
   const files = buildSite(template, data, today());
   // Base no endereço publicado: imagens e fontes vêm do site; imagens novas ainda não enviadas usam a cópia local
-  let html = files['index.html'].replace('<head>', `<head><base href="${data.site.url}">`);
+  const site = data.site.url.endsWith('/') ? data.site.url : data.site.url + '/';
+  let html = files['index.html']
+    .replace(/(src|href)="(img|fonts)\//g, `$1="${site}$2/`)
+    .replace(/url\("fonts\//g, `url("${site}fonts/`);
   for (const [path, up] of uploads) html = html.split(path).join(up.url);
   $('#preview-frame').srcdoc = html;
   $('#preview-frame').style.width = '100%';
