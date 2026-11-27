@@ -5,17 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- SITE:HEAD-START -->
 <title>Movix PDV — Sistema de caixa para mercadinho, distribuidora de bebidas e conveniência</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Movix é o sistema PDV de frente de caixa que funciona sem internet: vendas com leitor de código de barras e balança, PIX, cartão, controle de fiado com limite, estoque, pedidos para entrega e fechamento de caixa. Feito para mercadinho, distribuidora de bebidas, depósito e conveniência.">
 <meta name="keywords" content="sistema PDV, sistema para mercadinho, sistema para distribuidora de bebidas, sistema para depósito de bebidas, programa de caixa, frente de caixa, sistema de caixa offline, controle de fiado, caderneta de fiado digital, controle de estoque, PDV com balança, sistema para loja de conveniência, sistema para mercearia, sistema para adega, fechamento de caixa, Movix">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Brantec">
-<meta name="theme-color" content="#0E5A3A">
+<meta name="theme-color" content="#FFD200">
 <link rel="canonical" href="https://devmiqueias.github.io/movix-site/">
 <link rel="icon" href="img/movix-icone.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="preload" href="fonts/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="img/movix-pdv-frente-de-caixa.webp" as="image" fetchpriority="high" imagesrcset="img/movix-pdv-frente-de-caixa-720.webp 720w, img/movix-pdv-frente-de-caixa.webp 1440w" imagesizes="(max-width: 960px) 92vw, 680px">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Movix PDV">
@@ -135,1062 +133,122 @@
 }
 </script>
 <style>
-/* Layout: placas de rodovia em fundo claro; cada seção é uma "saída" com a tecla de atalho real do Movix. */
 @font-face { font-family: "Overpass"; font-style: normal; font-weight: 100 900; font-display: swap;
   src: url("fonts/overpass-latin-wght-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Overpass"; font-style: normal; font-weight: 100 900; font-display: swap;
   src: url("fonts/overpass-latin-ext-wght-normal.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-
-:root {
-  --ground: #ECF0EE; --surface: #FFFFFF; --surface-muted: #E2E8E4;
-  --ink: #14191B; --muted: #46514C; --dim: #5B6761; --line: #C6CFCA;
-  --sign: #0E5A3A; --sign-deep: #0A472E; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
-  --yellow: #F2C200; --on-yellow: #14191B; --red: #B3261E; --link: #0E5A3A;
-  --shadow: 0 1px 0 rgba(20,25,27,.06), 0 18px 40px -24px rgba(10,71,46,.45);
-  --font: "Overpass", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
-  --step--1: .875rem; --step-0: 1.0625rem; --step-1: 1.3rem; --step-2: 1.75rem; --step-3: clamp(2.1rem, 4.4vw, 3.4rem);
-  --radius: 10px; --wrap: 1180px;
-}
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --ground: #111517; --surface: #1A1F21; --surface-muted: #252C2F;
-  --ink: #EEF2EF; --muted: #B3BDB8; --dim: #9AA5A0; --line: #343D41;
-  --sign: #0F5C3B; --sign-deep: #0C4430; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
-  --yellow: #F2C200; --on-yellow: #14191B; --red: #F27B70; --link: #6FD3A2;
-  --shadow: 0 1px 0 rgba(0,0,0,.4), 0 18px 40px -24px rgba(0,0,0,.8); color-scheme: dark; } }
-:root[data-theme="dark"] {
-  --ground: #111517; --surface: #1A1F21; --surface-muted: #252C2F;
-  --ink: #EEF2EF; --muted: #B3BDB8; --dim: #9AA5A0; --line: #343D41;
-  --sign: #0F5C3B; --sign-deep: #0C4430; --on-sign: #FFFFFF; --on-sign-muted: #CFE3D8;
-  --yellow: #F2C200; --on-yellow: #14191B; --red: #F27B70; --link: #6FD3A2;
-  --shadow: 0 1px 0 rgba(0,0,0,.4), 0 18px 40px -24px rgba(0,0,0,.8); color-scheme: dark; }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
-body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--font); font-size: var(--step-0); line-height: 1.55; -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--link); }
-:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; border-radius: 4px; }
-h1, h2, h3 { line-height: 1.12; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
-p { margin: 0; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.num { font-variant-numeric: tabular-nums; }
-
-/* Placa: verde com filete branco interno, como as placas do DNIT */
-.plate { background: var(--sign); color: var(--on-sign); border-radius: var(--radius); position: relative; }
-.plate::after { content: ""; position: absolute; inset: 5px; border: 2px solid rgba(255,255,255,.92); border-radius: calc(var(--radius) - 4px); pointer-events: none; }
-
-/* Topo */
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--sign-deep); }
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--sign-deep); color: var(--on-sign); }
-.top .wrap { display: flex; align-items: center; gap: 20px; padding-block: 10px; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--on-sign); text-decoration: none; font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; }
-.brand svg { width: 34px; height: 34px; }
-.brand small { font-weight: 600; font-size: .78rem; color: var(--on-sign-muted); letter-spacing: .02em; }
-.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
-.nav a { color: var(--on-sign); text-decoration: none; font-weight: 700; font-size: .95rem; padding: 6px 10px; border-radius: 6px; }
-.nav a:hover { background: rgba(255,255,255,.12); }
-.nav a.cta { background: var(--yellow); color: var(--on-yellow); }
-@media (max-width: 760px) { .nav a:not(.cta) { display: none; } }
-.brand, .nav a { white-space: nowrap; }
-@media (max-width: 560px) { .brand small { display: none; } .nav a.cta { font-size: .9rem; padding: 7px 10px; } .top .wrap { gap: 10px; } }
-
-/* Hero */
-.hero { padding-block: 44px 24px; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: center; }
-@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
-.hero-sign { padding: 30px 30px 28px; display: grid; gap: 18px; }
-.hero-sign .route { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; color: var(--on-sign-muted); }
-.shield { display: inline-grid; place-items: center; min-width: 2.2em; height: 2.2em; padding: 0 .5em; background: var(--on-sign); color: var(--sign); border-radius: 6px; font-weight: 900; letter-spacing: 0; }
-.hero h1 { font-size: var(--step-3); font-weight: 800; }
-.hero h1 em { font-style: normal; color: var(--yellow); }
-.hero .lead { font-size: 1.15rem; color: var(--on-sign-muted); max-width: 46ch; }
-.hero .actions { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
-.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1rem; border: 2px solid transparent; }
-.btn-yellow { background: var(--yellow); color: var(--on-yellow); }
-.btn-yellow:hover { filter: brightness(1.06); }
-.btn-ghost { color: var(--on-sign); border-color: rgba(255,255,255,.7); }
-.btn-ghost:hover { background: rgba(255,255,255,.1); }
-.hero-facts { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: var(--step--1); font-weight: 700; color: var(--on-sign); position: relative; z-index: 1; }
-.hero-facts span::before { content: "✓ "; color: var(--yellow); }
-
-.shot { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
-.shot .bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--surface-muted); border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 700; color: var(--dim); }
-.shot .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: inline-block; }
-.shot .bar b { margin-left: 6px; font-weight: 700; }
-.shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; }
-
-/* Faixa de números */
-.strip { padding-block: 18px 6px; }
-.strip ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 760px) { .strip ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.strip li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 2px; }
-.strip strong { font-size: 1.35rem; font-weight: 800; }
-.strip span { color: var(--muted); font-size: var(--step--1); }
-
-/* Seções "saída" */
-section { padding-block: 56px; }
-.exit-head { display: grid; gap: 12px; margin-bottom: 26px; max-width: 760px; }
-.exit { display: inline-flex; align-items: center; gap: 8px; width: fit-content; background: var(--yellow); color: var(--on-yellow); font-weight: 900; font-size: var(--step--1); letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px 3px; border-radius: 5px; border: 2px solid var(--on-yellow); }
-.exit kbd { font: inherit; background: var(--on-yellow); color: var(--yellow); border-radius: 3px; padding: 0 6px; }
-.exit-head h2 { font-size: var(--step-2); font-weight: 800; }
-.exit-head p { color: var(--muted); font-size: 1.1rem; max-width: 62ch; }
-
-.feature { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 36px; align-items: center; }
-.feature.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
-.feature.flip .feature-text { order: 2; }
-@media (max-width: 960px) { .feature, .feature.flip { grid-template-columns: 1fr; } .feature.flip .feature-text { order: 0; } }
-.feature-text { display: grid; gap: 16px; min-width: 0; }
-.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-.ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; }
-.ticks li::before { content: ""; width: 22px; height: 22px; margin-top: 2px; border-radius: 5px; background: var(--sign) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
-.ticks b { font-weight: 800; }
-.alt { background: var(--surface); border-block: 1px solid var(--line); }
-
-/* Grade de telas */
-.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-@media (max-width: 960px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .gallery { grid-template-columns: 1fr; } }
-.gallery figure { margin: 0; display: grid; gap: 8px; }
-.gallery figcaption { font-weight: 700; font-size: var(--step--1); color: var(--muted); }
-
-/* Segurança */
-.guard-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 860px) { .guard-grid { grid-template-columns: 1fr; } }
-.guard { border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: var(--ground); display: grid; gap: 8px; align-content: start; }
-.guard h3 { font-size: var(--step-1); font-weight: 800; }
-.guard p { color: var(--muted); }
-
-/* Para quem */
-.who { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-@media (max-width: 860px) { .who { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.who div { padding: 18px 18px 16px; display: grid; gap: 4px; }
-.who h3 { font-size: 1.1rem; font-weight: 800; position: relative; z-index: 1; }
-.who p { font-size: var(--step--1); color: var(--on-sign-muted); position: relative; z-index: 1; }
-
-/* Preços */
-.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-@media (max-width: 860px) { .plans { grid-template-columns: 1fr; } }
-.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
-.plan .btn { margin-top: auto; }
-.plan.best { border: 3px solid var(--sign); }
-.plan .tag { align-self: flex-start; justify-self: start; font-size: .75rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; background: var(--yellow); color: var(--on-yellow); padding: 3px 8px; border-radius: 4px; }
-.plan h3 { font-size: var(--step-1); font-weight: 800; }
-.price { font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; }
-.price small { font-size: 1rem; font-weight: 700; color: var(--muted); letter-spacing: 0; }
-.plan p { color: var(--muted); }
-.plan .btn { justify-content: center; background: var(--sign); color: var(--on-sign); }
-.plan .btn:hover { background: var(--sign-deep); }
-
-/* Perguntas */
-.faq { display: grid; gap: 10px; max-width: 860px; }
-.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0 18px; }
-.faq summary { cursor: pointer; font-weight: 800; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--sign); }
-.faq details[open] summary::after { content: "–"; }
-.faq details p { padding-bottom: 16px; color: var(--muted); max-width: 70ch; }
-
-/* Chamada final e rodapé */
-.final { padding-block: 64px; }
-.final .plate { padding: 36px 32px; display: grid; gap: 16px; justify-items: start; }
-.final h2 { font-size: var(--step-2); font-weight: 800; position: relative; z-index: 1; }
-.final p { color: var(--on-sign-muted); max-width: 56ch; position: relative; z-index: 1; }
-.final .actions { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
-.phone { font-weight: 800; color: var(--on-sign); font-size: 1.2rem; user-select: all; }
-footer { padding-block: 28px 40px; color: var(--dim); font-size: var(--step--1); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
-/* ---------- Movimento e interação ----------
-   Curvas da skill animate: saída forte para entradas/UI, ease-in-out forte para o que se move na tela. */
-[hidden] { display: none !important; }
-/* Saltos (teclas F, âncoras) param abaixo do cabeçalho fixo */
-section, .step, [id] { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 72px); }
-:root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); interpolate-size: allow-keywords; }
-
-.skip { position: absolute; left: 12px; top: -60px; z-index: 30; background: var(--yellow); color: var(--on-yellow); padding: 10px 14px; border-radius: 6px; font-weight: 800; }
-.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 10px); }
-
-/* Faixa amarela tracejada (faixa central da pista) que avança com a leitura */
-.lane { position: fixed; z-index: 11; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 4px; pointer-events: none; }
-.lane span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(var(--read, 0));
-  background: repeating-linear-gradient(90deg, var(--yellow) 0 22px, transparent 22px 34px); }
-
-/* Entrada do topo (choreograph): título conduz; texto, botões e print entram em onda com intervalos que encurtam.
-   A placa verde não anima: uma entrada por bloco. */
-@keyframes rise { from { opacity: 0; transform: translate3d(var(--dx, 0), var(--dy, 0), 0); } }
-@keyframes fade { from { opacity: 0; } }
-.hero-sign > * { animation: rise var(--dur, .52s) var(--ease-out) var(--delay, 0s) both; }
-.hero-sign .route { --dy: 0; animation-name: fade; --dur: .4s; }
-.hero-sign h1 { --dy: 18px; --dur: .64s; }
-.hero-sign .lead { --dy: 10px; --delay: .11s; }
-.hero-sign .actions { --dy: 8px; --dur: .48s; --delay: .19s; }
-.hero-sign .hero-facts { animation-name: fade; --dur: .4s; --delay: .25s; }
-.hero-stage { perspective: 1600px; animation: rise .8s var(--ease-out) .12s both; --dx: 28px; }
-
-/* Print do topo: inclinado, se endireita ao rolar e acompanha o mouse (JS escreve o transform) */
-.hero-shot { position: relative; transform-origin: 30% 50%; transform: rotateY(-11deg) rotateX(5deg); will-change: transform; }
-.glare { position: absolute; inset: -40%; pointer-events: none; opacity: 0; transition: opacity .3s ease;
-  background: radial-gradient(closest-side, rgba(255,255,255,.38), rgba(255,255,255,0) 70%); mix-blend-mode: soft-light; }
-.hero-stage:hover .glare { opacity: 1; }
-
-/* Toque: retorno imediato em tudo que é clicável (100–160 ms) */
-.btn, .pos-prod, .keycap, .pos-pay button, .pos-finish, .gal-open, .dot { transition: transform .12s var(--ease-out), background-color .16s ease, color .16s ease, border-color .16s ease; }
-.btn:active, .pos-prod:active, .keycap:active, .keycap.pressed, .pos-pay button:active, .pos-finish:active:not(:disabled), .gal-open:active { transform: scale(.97); }
-
-/* Cartões levantam de leve só com mouse de verdade (toque não tem hover) */
-@media (hover: hover) and (pointer: fine) {
-  .guard, .plan, .who .plate, .strip li, .gallery .shot, .pos-prod { transition: transform .2s var(--ease-out), border-color .2s ease, background-color .16s ease; }
-  .guard:hover, .plan:hover, .who .plate:hover, .strip li:hover, .gallery .gal-open:hover .shot { transform: translateY(-3px); }
-  .pos-prod:hover { border-color: var(--sign); }
-}
-
-/* Revelação ao rolar: sempre visível; só sobe e ganha opacidade */
-.motion .reveal { transform: translateY(20px); opacity: .55; transition: transform .6s var(--ease-out), opacity .6s var(--ease-out); transition-delay: var(--rd, 0s); }
-.motion .reveal.seen { transform: none; opacity: 1; }
-.motion .reveal:nth-child(2) { --rd: .07s; } .motion .reveal:nth-child(3) { --rd: .12s; }
-.motion .reveal:nth-child(4) { --rd: .16s; } .motion .reveal:nth-child(n+5) { --rd: .19s; }
-
-/* ---------- Teclas F (atalhos reais do Movix) ---------- */
-.keys { padding-block: 6px 0; }
-.keys .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
-.keys p { margin: 0; font-weight: 800; color: var(--muted); font-size: var(--step--1); }
-.keys ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.keycap { display: inline-flex; align-items: baseline; gap: 8px; padding: 7px 12px 6px; border-radius: 8px; cursor: pointer; font: inherit; font-weight: 700; font-size: .9rem;
-  background: var(--surface); color: var(--ink); border: 1px solid var(--line); box-shadow: 0 3px 0 var(--line); }
-.keycap kbd { font: inherit; font-weight: 900; background: var(--ink); color: var(--surface); border-radius: 4px; padding: 1px 6px; }
-.keycap.pressed { box-shadow: 0 1px 0 var(--line); transform: translateY(2px); }
-@media (hover: none) { .keys p .kbd-only { display: none; } }
-
-/* ---------- Caixa de demonstração ---------- */
-.demo .pos { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 20px; align-items: start; }
-@media (max-width: 900px) { .demo .pos { grid-template-columns: 1fr; } }
-.pos-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-@media (max-width: 560px) { .pos-products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.pos-prod { text-align: left; display: grid; gap: 6px; align-content: space-between; min-height: 118px; padding: 14px; border-radius: 10px; cursor: pointer; font: inherit; color: var(--ink);
-  background: var(--surface); border: 1px solid var(--line); }
-.pos-prod b { font-weight: 800; line-height: 1.25; }
-.pos-prod .pos-unit { justify-self: start; font-size: .72rem; font-weight: 900; letter-spacing: .06em; padding: 2px 7px; border-radius: 4px; background: var(--surface-muted); color: var(--muted); }
-.pos-prod .pos-unit.kg { background: var(--yellow); color: var(--on-yellow); }
-.pos-prod .pos-price { font-size: 1.25rem; font-weight: 800; }
-.pos-prod .pos-price small { font-size: .8rem; color: var(--muted); font-weight: 700; }
-.pos-cart { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: grid; }
-.pos-cart-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 2px solid var(--ink); font-weight: 900; letter-spacing: .06em; font-size: .85rem; text-transform: uppercase; }
-.pos-cart-head button { font: inherit; text-transform: none; letter-spacing: 0; font-weight: 700; color: var(--muted); background: none; border: 0; cursor: pointer; }
-.pos-lines { list-style: none; margin: 0; padding: 0; min-height: 132px; max-height: 210px; overflow: auto; }
-.pos-lines li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 9px 16px; border-bottom: 1px solid var(--line);
-  transition: opacity .2s var(--ease-out), transform .2s var(--ease-out); }
-.pos-lines li.enter { opacity: 0; transform: translateY(-6px); }
-.pos-lines li .q { font-weight: 800; color: var(--muted); display: inline-block; }
-.pos-lines li strong { font-weight: 800; }
-.pos-lines li button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 2px 4px; }
-.pos-empty { padding: 26px 16px; color: var(--dim); text-align: center; }
-.pos-sum { margin: 12px; padding: 14px 16px; display: grid; gap: 12px; }
-.pos-total { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; position: relative; z-index: 1; }
-.pos-total span { font-weight: 900; letter-spacing: .08em; font-size: .8rem; text-transform: uppercase; color: var(--on-sign-muted); }
-.pos-total strong { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; }
-.pos-pay { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; position: relative; z-index: 1; }
-.pos-pay button { font: inherit; font-weight: 800; font-size: .85rem; padding: 8px 4px; border-radius: 7px; cursor: pointer; color: var(--on-sign); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.35); }
-.pos-pay button[aria-checked="true"] { background: var(--on-sign); color: var(--sign); border-color: var(--on-sign); }
-.pos-extra { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s var(--ease-out); position: relative; z-index: 1; }
-.pos-extra.open { grid-template-rows: 1fr; }
-.pos-extra > div { overflow: hidden; color: var(--on-sign); font-weight: 700; font-size: .95rem; }
-.pos-extra p { margin: 0; padding-top: 2px; }
-.pos-extra .warn { color: var(--yellow); }
-.sep { display: inline-block; margin-inline: .45em; opacity: .7; }
-.pos-finish { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 52px; border-radius: 9px; cursor: pointer;
-  font: inherit; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; background: var(--on-sign); color: var(--sign); border: 0; }
-.pos-finish kbd { font: inherit; background: var(--sign); color: var(--on-sign); border-radius: 4px; padding: 0 6px; }
-.pos-finish:disabled { opacity: .55; cursor: not-allowed; }
-.pos-done { position: absolute; inset: 0; z-index: 3; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 20px; text-align: center;
-  background: var(--surface); opacity: 0; transform: scale(.96); transition: opacity .26s var(--ease-out), transform .26s var(--ease-out); }
-.pos-done.show { opacity: 1; transform: none; }
-.pos-done svg { width: 74px; height: 74px; }
-.pos-done svg circle { fill: var(--sign); }
-.pos-done svg path { fill: none; stroke: #fff; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; }
-.pos-done.show svg path { transition: stroke-dashoffset .36s var(--ease-out) .12s; stroke-dashoffset: 0; }
-.pos-done.auth svg circle { fill: var(--yellow); }
-.pos-done h3 { font-size: 1.4rem; font-weight: 800; }
-.pos-done p { color: var(--muted); max-width: 32ch; }
-.pos-done .row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.pos-done .btn { background: var(--sign); color: var(--on-sign); }
-.pos-done .btn.alt { background: transparent; color: var(--ink); border-color: var(--line); }
-/* Celular: barra com o total enquanto o carrinho está fora da tela */
-.pos-mini { position: fixed; z-index: 8; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-  display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 0; border-radius: 12px; cursor: pointer; font: inherit; font-weight: 800;
-  background: var(--sign); color: var(--on-sign); box-shadow: 0 10px 30px -10px rgba(0,0,0,.5);
-  transform: translateY(0); opacity: 1; transition: transform .22s var(--ease-out), opacity .22s var(--ease-out); }
-.pos-mini.off { transform: translateY(calc(100% + 24px)); opacity: 0; pointer-events: none; }
-.pos-mini .pos-mini-t { margin-right: auto; font-size: 1.15rem; }
-.pos-mini span:last-child { background: var(--yellow); color: var(--on-yellow); padding: 4px 10px; border-radius: 6px; font-size: .85rem; }
-@media (min-width: 901px) { .pos-mini { display: none !important; } }
-@media (prefers-reduced-motion: reduce) { .pos-mini { transition: opacity .2s linear; } .pos-mini.off { transform: none; } }
-.pos-note { margin-top: 12px; color: var(--dim); font-size: var(--step--1); }
-
-/* ---------- Percurso ---------- */
-.tour-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
-.tour-steps { display: grid; gap: 0; }
-.step { display: grid; gap: 14px; min-width: 0; padding-block: 18px 42px; }
-.step h3 { font-size: var(--step-2); font-weight: 800; }
-.step > p { color: var(--muted); font-size: 1.1rem; }
-.tour-stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 92px); display: grid; gap: 14px; }
-.stage-frame { transform: perspective(1600px) rotateY(-4deg); transform-origin: 0 50%; transition: transform .6s var(--ease-out); cursor: zoom-in; }
-@media (hover: hover) and (pointer: fine) { .stage-frame:hover { transform: none; } }
-.stage-imgs { position: relative; aspect-ratio: 16 / 10; background: var(--surface-muted); }
-.stage-imgs img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; opacity: 0; transform: scale(1.025);
-  transition: opacity .5s var(--ease-out), transform .8s var(--ease-out); }
-.stage-imgs img.on { opacity: 1; transform: none; }
-.stage-count { margin-left: auto; color: var(--dim); font-weight: 800; }
-.stage-dots { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
-.stage-dots li { flex: 1 1 0; min-width: 18px; }
-.dot { display: block; width: 100%; height: 22px; padding: 8px 0; border: 0; background: none; cursor: pointer; }
-.dot::before { content: ""; display: block; height: 6px; border-radius: 3px; background: var(--line); transition: background-color .2s ease; }
-.dot.on::before { background: var(--sign); }
-@media (hover: hover) and (pointer: fine) { .dot:hover::before { background: var(--dim); } .dot.on:hover::before { background: var(--sign-deep); } }
-.motion .step { opacity: .6; transition: opacity .45s var(--ease-out); }
-.motion .step.is-active { opacity: 1; }
-.motion .step.is-active .exit { box-shadow: 0 0 0 4px color-mix(in srgb, var(--yellow) 35%, transparent); transition: box-shadow .3s ease; }
-.step-shot { display: none; margin: 0; }
-@media (min-width: 961px) { .step { min-height: 72vh; align-content: center; } }
-@media (max-width: 960px) {
-  .tour-grid { grid-template-columns: 1fr; }
-  .tour-stage { display: none; }
-  .step-shot { display: block; }
-  .motion .step { opacity: 1; }
-}
-
-/* ---------- Telas ampliáveis ---------- */
-.gallery figure { margin: 0; display: grid; gap: 8px; }
-.gal-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; font: inherit; color: inherit; }
-.gal-open .shot { position: relative; }
-.gal-open .zoom { position: absolute; right: 10px; bottom: 10px; background: rgba(20,25,27,.78); color: #fff; font-weight: 800; font-size: .78rem; padding: 4px 9px; border-radius: 999px; }
-.lb { width: min(1320px, 96vw); max-height: 94vh; padding: 0; border: 0; border-radius: 14px; background: var(--surface); color: var(--ink); overflow: hidden; }
-.lb::backdrop { background: rgba(10, 20, 15, .72); }
-.lb-panel { display: grid; }
-.lb-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--sign-deep); color: #fff; }
-.lb-bar b { margin-right: auto; font-weight: 800; }
-.lb-bar button { font: inherit; font-weight: 800; color: #fff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.4); border-radius: 7px; min-width: 40px; min-height: 36px; cursor: pointer; }
-.lb-img { overflow: auto; max-height: calc(94vh - 56px); background: var(--surface-muted); }
-.lb-img img { width: 100%; height: auto; display: block; }
-.lb-img img.swap { animation: lbswap .2s var(--ease-out) both; }
-@keyframes lbswap { from { opacity: .2; transform: translateX(var(--sx, 0)); } }
-
-/* Perguntas: abrem com altura animada onde o navegador permite; o + gira e vira × */
-.faq details::details-content { block-size: 0; overflow: clip; transition: block-size .24s var(--ease-out), content-visibility .24s allow-discrete; }
-.faq details[open]::details-content { block-size: auto; }
-.faq summary::after { content: "+"; transition: transform .2s var(--ease-out); }
-.faq details[open] summary::after { content: "+"; transform: rotate(45deg); }
-
-@media (prefers-reduced-motion: reduce) {
-  /* Menos movimento, não zero: some o deslocamento, fica o esmaecer */
-  .hero-sign > *, .hero-stage { animation-name: fade; animation-delay: 0s; }
-  .hero-shot, .stage-frame { transform: none !important; }
-  .glare { display: none; }
-  .motion .reveal { transform: none; opacity: 1; }
-  .pos-lines li.enter { transform: none; }
-  .pos-done { transform: none; }
-  .stage-imgs img { transform: none; transition: opacity .2s linear; }
-  .lb-img img.swap { animation-name: fade; }
-  .faq details::details-content { transition: none; }
-}
-
+.ssr-fallback { max-width: 1120px; margin: 0 auto; padding: 32px 20px; font-family: "Overpass", system-ui, sans-serif; color: #111111; }
+.ssr-fallback h1 { color: #111111; font-size: 2.2rem; margin: 0 0 12px; }
+.ssr-fallback img { max-width: 100%; height: auto; border-radius: 4px; margin: 16px 0; }
+.ssr-fallback section { padding: 24px 0; border-top: 1px solid #DCDCD7; }
 </style>
+<link rel="stylesheet" href="assets/movix-app.css">
 <!-- SITE:HEAD-END -->
 </head>
 <body>
 <!-- SITE:BODY-START -->
-<a class="skip" href="#caixa-demo">Pular para o conteúdo</a>
-<div class="lane" aria-hidden="true"><span></span></div>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Movix PDV, início">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="26" fill="#FFFFFF"/><path d="M26 72 V32 L50 56 L74 32 V52" fill="none" stroke="#0E5A3A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="71" r="7" fill="#FFC23D"/></svg>
-      <span>movix <small>by brantec</small></span>
-    </a>
-    <nav class="nav" aria-label="Seções">
-      <a href="#percurso">Percurso</a>
-      <a href="#seguranca">Segurança</a>
-      <a href="#planos">Planos</a>
-      <a href="#perguntas">Dúvidas</a>
-      <a class="cta" href="https://wa.me/5573974007373?text=Quero%20conhecer%20o%20Movix" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    </nav>
+<div id="root">
+  <div class="ssr-fallback">
+    <header>
+      <strong>Movix PDV · Brantec</strong>
+      <h1>O caixa do seu mercadinho vendendo rápido, até sem internet.</h1>
+      <p>Movix é o sistema PDV que junta frente de caixa, fiado, estoque, pedidos e fechamento de caixa. Instala no computador da loja e funciona offline.</p>
+      <p><a href="https://wa.me/5573974007373?text=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Movix">Agendar demonstração</a> — (73) 97400-7373</p>
+      <img src="img/movix-pdv-frente-de-caixa.webp" width="1440" height="900" alt="Frente de caixa do Movix PDV: catálogo de produtos por categoria, carrinho com cerveja, gelo e carvão e total da venda em destaque">
+    </header>
+    <section>
+      <h2>Um dia de loja no Movix, tela por tela</h2>
+      <p>Role a página: cada parada mostra uma tela real do sistema, na ordem em que o caixa usa.</p>
+      <article>
+        <h3>F2 · Frente de caixa feita para fila de sábado</h3>
+        <p>Bipe o código de barras, digite parte do nome ou toque no produto. O total aparece grande e a venda fecha com F9.</p>
+        <ul><li><span><b>Leitor de código de barras e balança</b>: frios e pão francês entram pelo peso ou pela etiqueta da balança.</span></li><li><span><b>Venda sai do estoque na hora</b> e o sistema avisa quando um item acaba no meio da venda.</span></li></ul>
+      </article>
+      <article>
+        <h3>F9 · PIX, dinheiro, cartão e fiado na mesma tela</h3>
+        <p>Escolha a forma de pagamento, digite o valor recebido e o troco aparece na hora.</p>
+        <ul><li><span><b>Cinco formas de pagamento</b>: PIX, dinheiro com troco, débito, crédito e fiado.</span></li><li><span><b>Comprovante</b> impresso ou em PDF com os dados da sua empresa.</span></li></ul>
+      </article>
+      <article>
+        <h3>F10 · Controle de fiado sem caderneta</h3>
+        <p>Cada cliente tem limite, extrato e botão de receber. Você vê quem deve, quanto deve e desde quando.</p>
+        <ul><li><span><b>Limite por cliente</b>: o caixa não passa do combinado sem a senha do administrador.</span></li><li><span><b>Recebimento em dinheiro, PIX ou cartão</b>, que entra direto no caixa do dia.</span></li></ul>
+      </article>
+      <article>
+        <h3>F10 · Cada compra e cada pagamento, em ordem</h3>
+        <p>O extrato mostra a venda de origem, quem atendeu e o saldo atualizado. Acabou a discussão no balcão.</p>
+        <ul><li><span><b>Código da venda</b> em cada compra a prazo.</span></li><li><span><b>Pagamento parcial</b> com observação.</span></li></ul>
+      </article>
+      <article>
+        <h3>F6 · Estoque que avisa antes de faltar</h3>
+        <p>Saiba quanto dinheiro está parado na prateleira, a margem de cada produto e o que repor hoje.</p>
+        <ul><li><span><b>Alerta de reposição</b> com estoque mínimo por produto.</span></li><li><span><b>Custo, venda e margem</b> lado a lado, com local: gôndola, freezer ou depósito.</span></li></ul>
+      </article>
+      <article>
+        <h3>F1 · Lucro de verdade, não só faturamento</h3>
+        <p>Receita, custo das mercadorias e lucro do dia, da semana ou do mês, com gráficos por categoria e forma de pagamento.</p>
+        <ul><li><span><b>DRE simplificado</b>: do faturamento bruto ao lucro líquido.</span></li><li><span><b>Mais vendidos e mais lucrativos</b> do período.</span></li></ul>
+      </article>
+      <article>
+        <h3>F3 · Pedidos para mesa e entrega</h3>
+        <p>Lance o pedido da mesa ou da entrega, acompanhe o que está aberto e cobre no caixa quando o cliente pagar.</p>
+        <ul><li><span><b>Pedidos abertos</b> com total e itens à vista.</span></li><li><span><b>Cobrança no caixa</b> com um clique, inclusive no fiado.</span></li></ul>
+      </article>
+      <article>
+        <h3>F2 · Turno fechado sem diferença</h3>
+        <p>Abertura com fundo de troco, sangria, suprimento e recebimentos de fiado: o sistema diz quanto dinheiro deve estar na gaveta.</p>
+        <ul><li><span><b>Vendas por forma de pagamento</b> no turno.</span></li><li><span><b>Histórico de caixas</b> para o administrador conferir.</span></li></ul>
+      </article>
+      
+    </section>
+    <section>
+      <h2>Seu caixa protegido, por dentro e por fora</h2>
+      <p>O Movix passa por testes de invasão antes de cada versão. As regras de segurança ficam no servidor do sistema, não só na tela.</p>
+      <h3>Cada um com sua senha</h3><p>Administrador e operadores de caixa entram com usuário e senha. O operador não vê lucro, não muda preço e não exclui cadastro.</p>
+      <h3>Senha do dono para exceções</h3><p>Desconto acima do permitido, cancelamento de venda e fiado acima do limite pedem a senha do administrador, válida uma única vez.</p>
+      <h3>Tela bloqueia sozinha</h3><p>Saiu do balcão, a tela trava depois de alguns minutos. Cinco senhas erradas bloqueiam o usuário por um tempo.</p>
+      <h3>Dados no seu computador</h3><p>Vendas e clientes ficam na loja, sem depender de servidor de terceiros e sem internet para funcionar.</p>
+      <h3>Backup automático</h3><p>Cópia de segurança diária, com envio extra para pendrive, HD externo ou a pasta da sua nuvem.</p>
+      <h3>Licença presa à máquina</h3><p>A ativação é assinada digitalmente e vinculada ao computador. Copiar o programa para outro PC não funciona.</p>
+      
+    </section>
+    <section>
+      <h2>Feito para quem vende no balcão</h2>
+      <h3>Mercadinho e mercearia</h3><p>Caixa rápido, balança, fiado da vizinhança e estoque de gôndola.</p>
+      <h3>Distribuidora de bebidas</h3><p>Pedidos para entrega, gelo e carvão, fiado de bares e restaurantes.</p>
+      <h3>Depósito e adega</h3><p>Venda em quantidade, controle de freezer e depósito, margem por produto.</p>
+      <h3>Conveniência</h3><p>Atendimento rápido com PIX e cartão, turnos de caixa e sangria.</p>
+      
+    </section>
+    <section>
+      <h2>Escolha o formato que cabe na sua loja</h2>
+      <p>Mostramos o Movix funcionando com os produtos da sua loja e passamos os valores do formato ideal para você. Instalação, ativação e suporte pela Brantec em todos.</p>
+      <h3>Mensal</h3><p>Para começar sem investimento alto e pagar mês a mês.</p><p><a href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20do%20Movix%20no%20plano%20mensal">Pedir valores no WhatsApp</a></p>
+      <h3>Anual (Mais escolhido)</h3><p>Um ano de uso com condição melhor que o mensal.</p><p><a href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20do%20Movix%20no%20plano%20anual">Pedir valores no WhatsApp</a></p>
+      <h3>Vitalícia</h3><p>Pague uma vez e use para sempre neste computador.</p><p><a href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20da%20licen%C3%A7a%20vital%C3%ADcia%20do%20Movix">Pedir valores no WhatsApp</a></p>
+      
+    </section>
+    <section>
+      <h2>Perguntas frequentes</h2>
+      <h3>O Movix funciona sem internet?</h3><p>Sim. O Movix roda no computador da loja e guarda os dados nele. A internet pode cair que o caixa continua vendendo, recebendo fiado e fechando o turno.</p>
+      <h3>O Movix controla fiado?</h3><p>Sim. Cada cliente tem limite de fiado, extrato com as compras e os pagamentos e botão de receber. Vender acima do limite ou mudar o limite exige a senha do administrador.</p>
+      <h3>Funciona com balança e leitor de código de barras?</h3><p>Sim. O leitor de código de barras funciona como teclado e a balança é lida pela porta serial. Produtos por quilo (frios, pão, carnes) também entram pela etiqueta da balança.</p>
+      <h3>Serve para distribuidora de bebidas e depósito?</h3><p>Sim. O Movix nasceu no balcão de distribuidora: pedidos para entrega, gelo e carvão, venda em quantidade, fiado de bares e restaurantes e controle de estoque por gôndola, freezer e depósito.</p>
+      <h3>Meus dados ficam seguros?</h3><p>Os dados ficam no seu computador, com backup automático e cópia extra para pendrive, HD externo ou pasta da nuvem. Cada pessoa entra com usuário e senha, e o operador de caixa só faz o que o administrador permitir.</p>
+      <h3>Como contratar o Movix?</h3><p>Você escolhe entre plano mensal, plano anual ou licença vitalícia. Chame a Brantec no WhatsApp: mostramos o sistema funcionando com os produtos da sua loja e passamos os valores do formato ideal para você.</p>
+      <h3>Qual computador eu preciso?</h3><p>Um computador com Windows 10 ou 11. A tela foi desenhada para monitores comuns de caixa, de 1366×768 em diante.</p>
+      
+    </section>
+    <footer>
+      <p>Movix PDV · sistema de frente de caixa, fiado e estoque · desenvolvido pela Brantec</p>
+      <p>Imagens: telas reais do Movix com dados de demonstração.</p>
+    </footer>
   </div>
-</header>
-
-<main id="inicio">
-  <div class="hero">
-    <div class="wrap hero-grid">
-      <div class="plate hero-sign">
-        <span class="route"><span class="shield">PDV</span> Sistema de caixa para o comércio de bairro</span>
-        <h1>O caixa do seu <em>mercadinho</em> vendendo rápido, até sem internet.</h1>
-        <p class="lead">Movix é o sistema PDV que junta frente de caixa, fiado, estoque, pedidos e fechamento de caixa. Instala no computador da loja e funciona offline.</p>
-        <div class="actions">
-          <a class="btn btn-yellow" href="https://wa.me/5573974007373?text=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Movix" target="_blank" rel="noopener">Agendar demonstração</a>
-          <a class="btn btn-ghost" href="#percurso">Ver o percurso</a>
-        </div>
-        <p class="hero-facts"><span>Leitor e balança</span><span>PIX e cartão</span><span>Fiado com limite</span></p>
-      </div>
-      <div class="hero-stage">
-        <div class="shot hero-shot">
-          <div class="bar"><i></i><i></i><i></i><b>Movix · Caixa (F2)</b></div>
-          <img src="img/movix-pdv-frente-de-caixa.webp" srcset="img/movix-pdv-frente-de-caixa-720.webp 720w, img/movix-pdv-frente-de-caixa.webp 1440w" sizes="(max-width: 960px) 92vw, 680px" width="1440" height="900" fetchpriority="high" alt="Frente de caixa do Movix PDV: catálogo de produtos por categoria, carrinho com cerveja, gelo e carvão e total da venda em destaque">
-          <span class="glare" aria-hidden="true"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="strip">
-    <div class="wrap">
-      <ul>
-        <li class="reveal"><strong>100% offline</strong><span>vende com a internet fora do ar</span></li>
-        <li class="reveal"><strong>F1 a F10</strong><span>cada tela num atalho de teclado</span></li>
-        <li class="reveal"><strong>5 formas</strong><span>PIX, dinheiro, débito, crédito e fiado</span></li>
-        <li class="reveal"><strong>Backup diário</strong><span>com cópia para pendrive ou nuvem</span></li>
-        
-      </ul>
-    </div>
-  </div>
-
-  <div class="keys">
-    <div class="wrap">
-      <p>Atalhos do Movix<span class="kbd-only">: aperte no teclado</span></p>
-      <ul>
-        <li><button type="button" class="keycap" data-key="F2" data-target="caixa-demo"><kbd>F2</kbd>Caixa</button></li>
-        <li><button type="button" class="keycap" data-key="F9" data-target="pagamento"><kbd>F9</kbd>Pagamento</button></li>
-        <li><button type="button" class="keycap" data-key="F10" data-target="fiado"><kbd>F10</kbd>Fiado</button></li>
-        <li><button type="button" class="keycap" data-key="F6" data-target="estoque"><kbd>F6</kbd>Estoque</button></li>
-        <li><button type="button" class="keycap" data-key="F1" data-target="painel"><kbd>F1</kbd>Painel</button></li>
-        <li><button type="button" class="keycap" data-key="F3" data-target="pedidos"><kbd>F3</kbd>Pedidos</button></li>
-      </ul>
-    </div>
-  </div>
-
-  <section id="caixa-demo" class="demo" aria-labelledby="t-demo">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit"><kbd>F2</kbd> Teste agora</span>
-        <h2 id="t-demo">Faça uma venda no caixa do Movix</h2>
-        <p>Clique nos produtos, escolha a forma de pagamento e finalize com F9, como no balcão. É só uma simulação: nada é enviado.</p>
-      </div>
-      <div class="pos" data-customer="Seu Zé" data-debt="139.47" data-limit="300.00">
-        <div class="pos-products" role="group" aria-label="Produtos">
-          <button type="button" class="pos-prod" data-name="Cerveja Pilsen Lata 350ml" data-price="4.49" data-unit="un" data-step="1">
-            <span class="pos-unit un">UN</span>
-            <b>Cerveja Pilsen Lata 350ml</b>
-            <span class="pos-price num">R$ 4,49<small>/un</small></span>
-          </button>
-          <button type="button" class="pos-prod" data-name="Gelo em Cubos 5kg" data-price="11.00" data-unit="un" data-step="1">
-            <span class="pos-unit un">UN</span>
-            <b>Gelo em Cubos 5kg</b>
-            <span class="pos-price num">R$ 11,00<small>/un</small></span>
-          </button>
-          <button type="button" class="pos-prod" data-name="Carvão Vegetal 3kg" data-price="17.90" data-unit="un" data-step="1">
-            <span class="pos-unit un">UN</span>
-            <b>Carvão Vegetal 3kg</b>
-            <span class="pos-price num">R$ 17,90<small>/un</small></span>
-          </button>
-          <button type="button" class="pos-prod" data-name="Refrigerante Cola 2L" data-price="10.99" data-unit="un" data-step="1">
-            <span class="pos-unit un">UN</span>
-            <b>Refrigerante Cola 2L</b>
-            <span class="pos-price num">R$ 10,99<small>/un</small></span>
-          </button>
-          <button type="button" class="pos-prod" data-name="Pão Francês" data-price="16.90" data-unit="kg" data-step="0.25">
-            <span class="pos-unit kg">KG</span>
-            <b>Pão Francês</b>
-            <span class="pos-price num">R$ 16,90<small>/kg</small></span>
-          </button>
-          <button type="button" class="pos-prod" data-name="Queijo Mussarela Fatiado" data-price="49.90" data-unit="kg" data-step="0.25">
-            <span class="pos-unit kg">KG</span>
-            <b>Queijo Mussarela Fatiado</b>
-            <span class="pos-price num">R$ 49,90<small>/kg</small></span>
-          </button>
-          
-        </div>
-        <div class="pos-cart">
-          <div class="pos-cart-head"><span>Carrinho de venda</span><button type="button" class="pos-clear">Limpar</button></div>
-          <ul class="pos-lines" aria-live="polite"></ul>
-          <p class="pos-empty">Clique num produto para começar a venda.</p>
-          <div class="plate pos-sum">
-            <div class="pos-total"><span>Total</span><strong class="num" id="pos-total">R$ 0,00</strong></div>
-            <div class="pos-pay" role="radiogroup" aria-label="Forma de pagamento">
-              <button type="button" role="radio" aria-checked="true" data-method="PIX">PIX</button>
-              <button type="button" role="radio" aria-checked="false" data-method="DINHEIRO">Dinheiro</button>
-              <button type="button" role="radio" aria-checked="false" data-method="CARTAO">Cartão</button>
-              <button type="button" role="radio" aria-checked="false" data-method="FIADO">Fiado</button>
-            </div>
-            <div class="pos-extra" aria-live="polite"><div></div></div>
-            <button type="button" class="pos-finish" disabled>Finalizar venda <kbd>F9</kbd></button>
-          </div>
-          <div class="pos-done" hidden role="status">
-            <svg viewBox="0 0 74 74" aria-hidden="true"><circle cx="37" cy="37" r="37"/><path d="M22 38 l10 10 l20 -22"/></svg>
-            <h3>Venda concluída</h3>
-            <p></p>
-            <div class="row"></div>
-          </div>
-        </div>
-      </div>
-      <button type="button" class="pos-mini" hidden aria-label="Ver o carrinho"><span class="pos-mini-n"></span><strong class="num pos-mini-t"></strong><span>Ver carrinho</span></button>
-      <p class="pos-note">Simulação com produtos de exemplo. No Movix, o leitor de código de barras e a balança fazem esse trabalho.</p>
-    </div>
-  </section>
-  
-
-  <section id="percurso" class="tour" aria-labelledby="t-tour">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Percurso completo</span>
-        <h2 id="t-tour">Um dia de loja no Movix, tela por tela</h2>
-        <p>Role a página: cada parada mostra uma tela real do sistema, na ordem em que o caixa usa.</p>
-      </div>
-      <div class="tour-grid">
-        <div class="tour-steps">
-          <article class="step" id="caixa" data-step="0" aria-labelledby="t-caixa">
-            <span class="exit"><kbd>F2</kbd> Saída Caixa</span>
-            <h3 id="t-caixa">Frente de caixa feita para fila de sábado</h3>
-            <p>Bipe o código de barras, digite parte do nome ou toque no produto. O total aparece grande e a venda fecha com F9.</p>
-            <ul class="ticks"><li><span><b>Leitor de código de barras e balança</b>: frios e pão francês entram pelo peso ou pela etiqueta da balança.</span></li><li><span><b>Venda sai do estoque na hora</b> e o sistema avisa quando um item acaba no meio da venda.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-pdv-frente-de-caixa.webp" srcset="img/movix-pdv-frente-de-caixa-720.webp 720w, img/movix-pdv-frente-de-caixa.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Frente de caixa do Movix PDV com catálogo de produtos, carrinho de venda e total em destaque"></figure>
-          </article>
-          <article class="step" id="pagamento" data-step="1" aria-labelledby="t-pagamento">
-            <span class="exit"><kbd>F9</kbd> Saída Pagamento</span>
-            <h3 id="t-pagamento">PIX, dinheiro, cartão e fiado na mesma tela</h3>
-            <p>Escolha a forma de pagamento, digite o valor recebido e o troco aparece na hora.</p>
-            <ul class="ticks"><li><span><b>Cinco formas de pagamento</b>: PIX, dinheiro com troco, débito, crédito e fiado.</span></li><li><span><b>Comprovante</b> impresso ou em PDF com os dados da sua empresa.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-pagamento-pix-dinheiro-cartao-fiado.webp" srcset="img/movix-pagamento-pix-dinheiro-cartao-fiado-720.webp 720w, img/movix-pagamento-pix-dinheiro-cartao-fiado.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Tela de pagamento do sistema PDV Movix com PIX, dinheiro, débito, crédito e fiado, valor recebido e troco"></figure>
-          </article>
-          <article class="step" id="fiado" data-step="2" aria-labelledby="t-fiado">
-            <span class="exit"><kbd>F10</kbd> Saída Clientes</span>
-            <h3 id="t-fiado">Controle de fiado sem caderneta</h3>
-            <p>Cada cliente tem limite, extrato e botão de receber. Você vê quem deve, quanto deve e desde quando.</p>
-            <ul class="ticks"><li><span><b>Limite por cliente</b>: o caixa não passa do combinado sem a senha do administrador.</span></li><li><span><b>Recebimento em dinheiro, PIX ou cartão</b>, que entra direto no caixa do dia.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-clientes-fiado.webp" srcset="img/movix-clientes-fiado-720.webp 720w, img/movix-clientes-fiado.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Controle de fiado no Movix: lista de clientes com limite de crédito, saldo devedor e botões de receber e extrato"></figure>
-          </article>
-          <article class="step" id="extrato" data-step="3" aria-labelledby="t-extrato">
-            <span class="exit"><kbd>F10</kbd> Extrato do fiado</span>
-            <h3 id="t-extrato">Cada compra e cada pagamento, em ordem</h3>
-            <p>O extrato mostra a venda de origem, quem atendeu e o saldo atualizado. Acabou a discussão no balcão.</p>
-            <ul class="ticks"><li><span><b>Código da venda</b> em cada compra a prazo.</span></li><li><span><b>Pagamento parcial</b> com observação.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-extrato-do-fiado.webp" srcset="img/movix-extrato-do-fiado-720.webp 720w, img/movix-extrato-do-fiado.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Extrato do fiado de um cliente no Movix com compras a prazo e pagamento recebido"></figure>
-          </article>
-          <article class="step" id="estoque" data-step="4" aria-labelledby="t-estoque">
-            <span class="exit"><kbd>F6</kbd> Saída Estoque</span>
-            <h3 id="t-estoque">Estoque que avisa antes de faltar</h3>
-            <p>Saiba quanto dinheiro está parado na prateleira, a margem de cada produto e o que repor hoje.</p>
-            <ul class="ticks"><li><span><b>Alerta de reposição</b> com estoque mínimo por produto.</span></li><li><span><b>Custo, venda e margem</b> lado a lado, com local: gôndola, freezer ou depósito.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-controle-de-estoque.webp" srcset="img/movix-controle-de-estoque-720.webp 720w, img/movix-controle-de-estoque.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Controle de estoque do Movix com patrimônio em estoque, margem, nível de estoque por produto e alertas de reposição"></figure>
-          </article>
-          <article class="step" id="painel" data-step="5" aria-labelledby="t-painel">
-            <span class="exit"><kbd>F1</kbd> Saída Painel</span>
-            <h3 id="t-painel">Lucro de verdade, não só faturamento</h3>
-            <p>Receita, custo das mercadorias e lucro do dia, da semana ou do mês, com gráficos por categoria e forma de pagamento.</p>
-            <ul class="ticks"><li><span><b>DRE simplificado</b>: do faturamento bruto ao lucro líquido.</span></li><li><span><b>Mais vendidos e mais lucrativos</b> do período.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-graficos-vendas-dre.webp" srcset="img/movix-graficos-vendas-dre-720.webp 720w, img/movix-graficos-vendas-dre.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Dashboard do Movix com evolução do faturamento, vendas por categoria, formas de pagamento e demonstrativo de resultado (DRE)"></figure>
-          </article>
-          <article class="step" id="pedidos" data-step="6" aria-labelledby="t-pedidos">
-            <span class="exit"><kbd>F3</kbd> Saída Pedidos</span>
-            <h3 id="t-pedidos">Pedidos para mesa e entrega</h3>
-            <p>Lance o pedido da mesa ou da entrega, acompanhe o que está aberto e cobre no caixa quando o cliente pagar.</p>
-            <ul class="ticks"><li><span><b>Pedidos abertos</b> com total e itens à vista.</span></li><li><span><b>Cobrança no caixa</b> com um clique, inclusive no fiado.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-pedidos-comandas-entrega.webp" srcset="img/movix-pedidos-comandas-entrega-720.webp 720w, img/movix-pedidos-comandas-entrega.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Pedidos do Movix para mesa e entrega, com total e botão de cobrar no caixa"></figure>
-          </article>
-          <article class="step" id="fechamento" data-step="7" aria-labelledby="t-fechamento">
-            <span class="exit"><kbd>F2</kbd> Fechamento de caixa</span>
-            <h3 id="t-fechamento">Turno fechado sem diferença</h3>
-            <p>Abertura com fundo de troco, sangria, suprimento e recebimentos de fiado: o sistema diz quanto dinheiro deve estar na gaveta.</p>
-            <ul class="ticks"><li><span><b>Vendas por forma de pagamento</b> no turno.</span></li><li><span><b>Histórico de caixas</b> para o administrador conferir.</span></li></ul>
-            <figure class="shot step-shot"><img src="img/movix-fechamento-de-caixa.webp" srcset="img/movix-fechamento-de-caixa-720.webp 720w, img/movix-fechamento-de-caixa.webp 1440w" sizes="92vw" width="1440" height="900" loading="lazy" alt="Fechamento de caixa do Movix com fundo de troco, vendas por forma de pagamento, sangria e suprimento"></figure>
-          </article>
-          
-        </div>
-        <div class="tour-stage">
-          <div class="shot stage-frame" role="button" tabindex="0" aria-label="Ampliar a tela atual">
-            <div class="bar"><i></i><i></i><i></i><b class="stage-label">Caixa (F2)</b><span class="stage-count num"><span class="stage-n">1</span> / 8</span></div>
-            <div class="stage-imgs">
-              <img src="img/movix-pdv-frente-de-caixa.webp" srcset="img/movix-pdv-frente-de-caixa-720.webp 720w, img/movix-pdv-frente-de-caixa.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Caixa (F2)" loading="lazy" class="on">
-              <img src="img/movix-pagamento-pix-dinheiro-cartao-fiado.webp" srcset="img/movix-pagamento-pix-dinheiro-cartao-fiado-720.webp 720w, img/movix-pagamento-pix-dinheiro-cartao-fiado.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Pagamento (F9)" loading="lazy">
-              <img src="img/movix-clientes-fiado.webp" srcset="img/movix-clientes-fiado-720.webp 720w, img/movix-clientes-fiado.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Clientes (F10)" loading="lazy">
-              <img src="img/movix-extrato-do-fiado.webp" srcset="img/movix-extrato-do-fiado-720.webp 720w, img/movix-extrato-do-fiado.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Extrato do fiado" loading="lazy">
-              <img src="img/movix-controle-de-estoque.webp" srcset="img/movix-controle-de-estoque-720.webp 720w, img/movix-controle-de-estoque.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Estoque (F6)" loading="lazy">
-              <img src="img/movix-graficos-vendas-dre.webp" srcset="img/movix-graficos-vendas-dre-720.webp 720w, img/movix-graficos-vendas-dre.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Dashboard (F1)" loading="lazy">
-              <img src="img/movix-pedidos-comandas-entrega.webp" srcset="img/movix-pedidos-comandas-entrega-720.webp 720w, img/movix-pedidos-comandas-entrega.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Pedidos (F3)" loading="lazy">
-              <img src="img/movix-fechamento-de-caixa.webp" srcset="img/movix-fechamento-de-caixa-720.webp 720w, img/movix-fechamento-de-caixa.webp 1440w" sizes="(max-width: 1240px) 56vw, 680px" width="1440" height="900" alt="" data-label="Caixa · fechamento" loading="lazy">
-              
-            </div>
-          </div>
-          <ol class="stage-dots" aria-label="Paradas do percurso"><li><button type="button" class="dot on" aria-label="Ir para: Caixa (F2)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Pagamento (F9)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Clientes (F10)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Extrato do fiado"></button></li><li><button type="button" class="dot" aria-label="Ir para: Estoque (F6)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Dashboard (F1)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Pedidos (F3)"></button></li><li><button type="button" class="dot" aria-label="Ir para: Caixa · fechamento"></button></li></ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="telas" class="alt" aria-labelledby="t-telas">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Todas as saídas</span>
-        <h2 id="t-telas">Mais telas reais do Movix</h2>
-        <p>Imagens do sistema funcionando numa loja de demonstração, sem montagem.</p>
-      </div>
-      <div class="gallery">
-        <figure class="reveal"><button type="button" class="gal-open" data-zoom="img/movix-dashboard-lucro-faturamento.webp" data-caption="Painel (F1): receita, custo e lucro do período" data-alt="Indicadores do Movix: receita bruta, custo das mercadorias, lucro bruto e produtos mais vendidos" aria-label="Ampliar: Painel (F1): receita, custo e lucro do período"><div class="shot"><img src="img/movix-dashboard-lucro-faturamento.webp" srcset="img/movix-dashboard-lucro-faturamento-720.webp 720w, img/movix-dashboard-lucro-faturamento.webp 1440w" sizes="(max-width: 560px) 92vw, (max-width: 960px) 46vw, 380px" width="1440" height="900" loading="lazy" alt="Indicadores do Movix: receita bruta, custo das mercadorias, lucro bruto e produtos mais vendidos"><span class="zoom" aria-hidden="true">Ampliar</span></div></button><figcaption>Painel (F1): receita, custo e lucro do período</figcaption></figure>
-        <figure class="reveal"><button type="button" class="gal-open" data-zoom="img/movix-movimentacoes-vendas.webp" data-caption="Movimentações (F4): toda venda com lucro e forma de pagamento" data-alt="Movimentações do Movix com todas as vendas, forma de pagamento, valor líquido e lucro de cada uma" aria-label="Ampliar: Movimentações (F4): toda venda com lucro e forma de pagamento"><div class="shot"><img src="img/movix-movimentacoes-vendas.webp" srcset="img/movix-movimentacoes-vendas-720.webp 720w, img/movix-movimentacoes-vendas.webp 1440w" sizes="(max-width: 560px) 92vw, (max-width: 960px) 46vw, 380px" width="1440" height="900" loading="lazy" alt="Movimentações do Movix com todas as vendas, forma de pagamento, valor líquido e lucro de cada uma"><span class="zoom" aria-hidden="true">Ampliar</span></div></button><figcaption>Movimentações (F4): toda venda com lucro e forma de pagamento</figcaption></figure>
-        <figure class="reveal"><button type="button" class="gal-open" data-zoom="img/movix-pdv-frente-de-caixa.webp" data-caption="Caixa (F2): produtos de balança e sem estoque sinalizados" data-alt="Catálogo de produtos do PDV Movix com estoque, preço e itens vendidos por peso na balança" aria-label="Ampliar: Caixa (F2): produtos de balança e sem estoque sinalizados"><div class="shot"><img src="img/movix-pdv-frente-de-caixa.webp" srcset="img/movix-pdv-frente-de-caixa-720.webp 720w, img/movix-pdv-frente-de-caixa.webp 1440w" sizes="(max-width: 560px) 92vw, (max-width: 960px) 46vw, 380px" width="1440" height="900" loading="lazy" alt="Catálogo de produtos do PDV Movix com estoque, preço e itens vendidos por peso na balança"><span class="zoom" aria-hidden="true">Ampliar</span></div></button><figcaption>Caixa (F2): produtos de balança e sem estoque sinalizados</figcaption></figure>
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="seguranca" aria-labelledby="t-seg">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Pista segura</span>
-        <h2 id="t-seg">Seu caixa protegido, por dentro e por fora</h2>
-        <p>O Movix passa por testes de invasão antes de cada versão. As regras de segurança ficam no servidor do sistema, não só na tela.</p>
-      </div>
-      <div class="guard-grid">
-        <div class="guard reveal"><h3>Cada um com sua senha</h3><p>Administrador e operadores de caixa entram com usuário e senha. O operador não vê lucro, não muda preço e não exclui cadastro.</p></div>
-        <div class="guard reveal"><h3>Senha do dono para exceções</h3><p>Desconto acima do permitido, cancelamento de venda e fiado acima do limite pedem a senha do administrador, válida uma única vez.</p></div>
-        <div class="guard reveal"><h3>Tela bloqueia sozinha</h3><p>Saiu do balcão, a tela trava depois de alguns minutos. Cinco senhas erradas bloqueiam o usuário por um tempo.</p></div>
-        <div class="guard reveal"><h3>Dados no seu computador</h3><p>Vendas e clientes ficam na loja, sem depender de servidor de terceiros e sem internet para funcionar.</p></div>
-        <div class="guard reveal"><h3>Backup automático</h3><p>Cópia de segurança diária, com envio extra para pendrive, HD externo ou a pasta da sua nuvem.</p></div>
-        <div class="guard reveal"><h3>Licença presa à máquina</h3><p>A ativação é assinada digitalmente e vinculada ao computador. Copiar o programa para outro PC não funciona.</p></div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="para-quem" class="alt" aria-labelledby="t-quem">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Destinos</span>
-        <h2 id="t-quem">Feito para quem vende no balcão</h2>
-      </div>
-      <div class="who">
-        <div class="plate reveal"><h3>Mercadinho e mercearia</h3><p>Caixa rápido, balança, fiado da vizinhança e estoque de gôndola.</p></div>
-        <div class="plate reveal"><h3>Distribuidora de bebidas</h3><p>Pedidos para entrega, gelo e carvão, fiado de bares e restaurantes.</p></div>
-        <div class="plate reveal"><h3>Depósito e adega</h3><p>Venda em quantidade, controle de freezer e depósito, margem por produto.</p></div>
-        <div class="plate reveal"><h3>Conveniência</h3><p>Atendimento rápido com PIX e cartão, turnos de caixa e sangria.</p></div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="planos" aria-labelledby="t-planos">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Como contratar</span>
-        <h2 id="t-planos">Escolha o formato que cabe na sua loja</h2>
-        <p>Mostramos o Movix funcionando com os produtos da sua loja e passamos os valores do formato ideal para você. Instalação, ativação e suporte pela Brantec em todos.</p>
-      </div>
-      <div class="plans">
-        <div class="plan reveal">
-          
-          <h3>Mensal</h3>
-          
-          <p>Para começar sem investimento alto e pagar mês a mês.</p>
-          <a class="btn" href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20do%20Movix%20no%20plano%20mensal" target="_blank" rel="noopener">Pedir valores no WhatsApp</a>
-        </div>
-        <div class="plan reveal best">
-          <span class="tag">Mais escolhido</span>
-          <h3>Anual</h3>
-          
-          <p>Um ano de uso com condição melhor que o mensal.</p>
-          <a class="btn" href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20do%20Movix%20no%20plano%20anual" target="_blank" rel="noopener">Pedir valores no WhatsApp</a>
-        </div>
-        <div class="plan reveal">
-          
-          <h3>Vitalícia</h3>
-          
-          <p>Pague uma vez e use para sempre neste computador.</p>
-          <a class="btn" href="https://wa.me/5573974007373?text=Quero%20saber%20os%20valores%20da%20licen%C3%A7a%20vital%C3%ADcia%20do%20Movix" target="_blank" rel="noopener">Pedir valores no WhatsApp</a>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="perguntas" class="alt" aria-labelledby="t-faq">
-    <div class="wrap">
-      <div class="exit-head">
-        <span class="exit">Informações</span>
-        <h2 id="t-faq">Perguntas frequentes</h2>
-      </div>
-      <div class="faq">
-        <details open><summary>O Movix funciona sem internet?</summary><p>Sim. O Movix roda no computador da loja e guarda os dados nele. A internet pode cair que o caixa continua vendendo, recebendo fiado e fechando o turno.</p></details>
-        <details><summary>O Movix controla fiado?</summary><p>Sim. Cada cliente tem limite de fiado, extrato com as compras e os pagamentos e botão de receber. Vender acima do limite ou mudar o limite exige a senha do administrador.</p></details>
-        <details><summary>Funciona com balança e leitor de código de barras?</summary><p>Sim. O leitor de código de barras funciona como teclado e a balança é lida pela porta serial. Produtos por quilo (frios, pão, carnes) também entram pela etiqueta da balança.</p></details>
-        <details><summary>Serve para distribuidora de bebidas e depósito?</summary><p>Sim. O Movix nasceu no balcão de distribuidora: pedidos para entrega, gelo e carvão, venda em quantidade, fiado de bares e restaurantes e controle de estoque por gôndola, freezer e depósito.</p></details>
-        <details><summary>Meus dados ficam seguros?</summary><p>Os dados ficam no seu computador, com backup automático e cópia extra para pendrive, HD externo ou pasta da nuvem. Cada pessoa entra com usuário e senha, e o operador de caixa só faz o que o administrador permitir.</p></details>
-        <details><summary>Como contratar o Movix?</summary><p>Você escolhe entre plano mensal, plano anual ou licença vitalícia. Chame a Brantec no WhatsApp: mostramos o sistema funcionando com os produtos da sua loja e passamos os valores do formato ideal para você.</p></details>
-        <details><summary>Qual computador eu preciso?</summary><p>Um computador com Windows 10 ou 11. A tela foi desenhada para monitores comuns de caixa, de 1366×768 em diante.</p></details>
-        
-      </div>
-    </div>
-  </section>
-
-  <div class="final">
-    <div class="wrap">
-      <div class="plate reveal">
-        <h2>Próxima saída: o seu caixa no Movix.</h2>
-        <p>Mostramos o sistema funcionando com os produtos da sua loja. Chame no WhatsApp e agende.</p>
-        <div class="actions">
-          <a class="btn btn-yellow" href="https://wa.me/5573974007373?text=Quero%20conhecer%20o%20Movix" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-          <span class="phone num">(73) 97400-7373</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<dialog class="lb" aria-label="Tela ampliada">
-  <div class="lb-panel">
-    <div class="lb-bar"><b></b><button type="button" class="lb-prev" aria-label="Tela anterior">‹</button><button type="button" class="lb-next" aria-label="Próxima tela">›</button><button type="button" class="lb-close" aria-label="Fechar">×</button></div>
-    <div class="lb-img"><img src="" alt=""></div>
-  </div>
-</dialog>
-
-<footer>
-  <div class="wrap">
-    <span>Movix PDV · sistema de frente de caixa, fiado e estoque · desenvolvido pela Brantec</span>
-    <span>Imagens: telas reais do Movix com dados de demonstração.</span>
-  </div>
-</footer>
-<script>
-(function () {
-  'use strict';
-  var root = document.documentElement;
-  var mq = function (q) { return window.matchMedia ? window.matchMedia(q).matches : false; };
-  var reduce = mq('(prefers-reduced-motion: reduce)');
-  var finePointer = mq('(hover: hover) and (pointer: fine)');
-  var hasIO = 'IntersectionObserver' in window;
-  var $ = function (s, el) { return (el || document).querySelector(s); };
-  var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
-  var brl = function (n) { return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
-  var esc = function (v) { return String(v).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
-  var easeOut = function (t) { return 1 - Math.pow(1 - t, 3); };
-
-  // ------------------------------------------------ faixa de leitura + print do topo
-  var shot = $('.hero-shot');
-  var glare = $('.glare');
-  var scrollH = 0, cur = { x: 0, y: 0 }, target = { x: 0, y: 0 }, raf = 0;
-  function drawShot() {
-    raf = 0;
-    if (!shot || reduce) return;
-    // Mola simples: aproxima 14% por quadro; o mouse inclina, a rolagem endireita
-    cur.x += (target.x - cur.x) * 0.14;
-    cur.y += (target.y - cur.y) * 0.14;
-    var flat = 1 - scrollH;
-    shot.style.transform = 'rotateY(' + (-11 * flat + cur.x * 7).toFixed(2) + 'deg) rotateX(' + (5 * flat - cur.y * 5).toFixed(2) + 'deg) translateY(' + (-14 * scrollH).toFixed(1) + 'px)';
-    if (glare) glare.style.transform = 'translate(' + (cur.x * 22).toFixed(1) + '%, ' + (cur.y * 22).toFixed(1) + '%)';
-    if (Math.abs(target.x - cur.x) > 0.002 || Math.abs(target.y - cur.y) > 0.002) raf = requestAnimationFrame(drawShot);
-  }
-  var kick = function () { if (!raf) raf = requestAnimationFrame(drawShot); };
-  var ticking = false;
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      var max = root.scrollHeight - window.innerHeight;
-      var y = window.scrollY || root.scrollTop;
-      root.style.setProperty('--read', max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
-      scrollH = Math.min(1, y / 420);
-      kick();
-      ticking = false;
-    });
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  var stage = $('.hero-stage');
-  if (stage && finePointer && !reduce) {
-    stage.addEventListener('pointermove', function (e) {
-      var r = stage.getBoundingClientRect();
-      target.x = ((e.clientX - r.left) / r.width - 0.5) * 2;
-      target.y = ((e.clientY - r.top) / r.height - 0.5) * 2;
-      kick();
-    });
-    stage.addEventListener('pointerleave', function () { target.x = 0; target.y = 0; kick(); });
-  }
-
-  // ------------------------------------------------ caixa de demonstração
-  var pos = $('.pos');
-  var cart = [];
-  var shown = 0;
-  var method = 'PIX';
-  if (pos) {
-    var linesEl = $('.pos-lines', pos), emptyEl = $('.pos-empty', pos), totalEl = $('#pos-total');
-    var extra = $('.pos-extra', pos), extraBody = $('.pos-extra > div', pos), finish = $('.pos-finish', pos);
-    var done = $('.pos-done', pos);
-    var debt = Number(pos.getAttribute('data-debt')) || 0, limit = Number(pos.getAttribute('data-limit')) || 0;
-    var customer = pos.getAttribute('data-customer') || 'Cliente';
-    var total = function () { return cart.reduce(function (s, l) { return s + Math.round(l.price * l.qty * 100) / 100; }, 0); };
-    var qtyText = function (l) { return l.kg ? l.qty.toLocaleString('pt-BR', { minimumFractionDigits: 3 }) + ' kg' : l.qty + 'x'; };
-    var tween = 0;
-    function countTo(to) {
-      cancelAnimationFrame(tween);
-      var from = shown, t0 = performance.now(), dur = reduce ? 0 : 320;
-      (function step(now) {
-        var k = dur ? Math.min(1, (now - t0) / dur) : 1;
-        shown = from + (to - from) * easeOut(k);
-        totalEl.textContent = brl(k === 1 ? to : shown);
-        if (k < 1) tween = requestAnimationFrame(step); else shown = to;
-      })(t0);
-    }
-    function received(t) {
-      var notes = [10, 20, 50, 100, 200];
-      for (var i = 0; i < notes.length; i++) if (notes[i] >= t) return notes[i];
-      return Math.ceil(t / 50) * 50;
-    }
-    function updateExtra() {
-      var t = total();
-      var html = '';
-      if (method === 'DINHEIRO' && t > 0) {
-        var rec = received(t);
-        html = '<p>Cliente deu ' + brl(rec) + '<span class="sep">·</span><b>Troco ' + brl(rec - t) + '</b></p>';
-      } else if (method === 'FIADO' && t > 0) {
-        var after = debt + t;
-        html = '<p>' + esc(customer) + ' deve ' + brl(debt) + '<span class="sep">·</span>limite ' + brl(limit) + '</p>' +
-          (after > limit ? '<p class="warn">Passaria do limite: o caixa pede a senha do administrador.</p>' : '<p>Fica devendo ' + brl(after) + '.</p>');
-      }
-      extraBody.innerHTML = html;
-      extra.classList.toggle('open', html !== '');
-    }
-    function render(changed, added) {
-      emptyEl.hidden = cart.length > 0;
-      finish.disabled = cart.length === 0;
-      var existing = {};
-      $$('li', linesEl).forEach(function (li) { existing[li.getAttribute('data-name')] = li; });
-      cart.forEach(function (l) {
-        var li = existing[l.name];
-        if (!li) {
-          li = document.createElement('li');
-          li.setAttribute('data-name', l.name);
-          li.innerHTML = '<span><span class="q"></span> <span class="n"></span></span><strong class="num"></strong><button type="button" aria-label="Remover">×</button>';
-          $('.n', li).textContent = l.name;
-          $('button', li).addEventListener('click', function () { removeLine(l.name); });
-          if (!reduce) li.classList.add('enter');
-          linesEl.appendChild(li);
-          requestAnimationFrame(function () { requestAnimationFrame(function () { li.classList.remove('enter'); }); });
-        } else if (l.name === changed && !reduce && li.animate) {
-          $('.q', li).animate([{ transform: 'scale(1.25)' }, { transform: 'none' }], { duration: 180, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
-        }
-        $('.q', li).textContent = qtyText(l);
-        $('strong', li).textContent = brl(Math.round(l.price * l.qty * 100) / 100);
-        delete existing[l.name];
-      });
-      Object.keys(existing).forEach(function (k) { existing[k].remove(); });
-      if (added) linesEl.scrollTop = linesEl.scrollHeight;
-      countTo(total());
-      updateExtra();
-      updateMini();
-    }
-    var mini = $('.pos-mini'), sumVisible = true, demoVisible = false;
-    function updateMini() {
-      if (!mini) return;
-      var items = cart.length;
-      $('.pos-mini-n', mini).textContent = items + (items === 1 ? ' item' : ' itens');
-      $('.pos-mini-t', mini).textContent = brl(total());
-      mini.hidden = false;
-      mini.classList.toggle('off', items === 0 || sumVisible || !demoVisible);
-    }
-    if (mini && 'IntersectionObserver' in window) {
-      // Some quando o total do carrinho já está visível (ou quando a seção sai da tela)
-      var demoSec = $('#caixa-demo');
-      new IntersectionObserver(function (es) { sumVisible = es[0].isIntersecting; updateMini(); }).observe($('.pos-sum', pos));
-      new IntersectionObserver(function (es) { demoVisible = es[0].isIntersecting; updateMini(); }).observe(demoSec);
-      mini.addEventListener('click', function () { $('.pos-sum', pos).scrollIntoView({ behavior: reduce ? 'instant' : 'smooth', block: 'center' }); });
-    }
-    function add(btn) {
-      var name = btn.getAttribute('data-name');
-      var l = cart.find(function (x) { return x.name === name; });
-      var kg = btn.getAttribute('data-unit') === 'kg';
-      var stepQ = Number(btn.getAttribute('data-step')) || 1;
-      if (l) l.qty = Math.round((l.qty + stepQ) * 1000) / 1000;
-      else cart.push(l = { name: name, price: Number(btn.getAttribute('data-price')) || 0, qty: stepQ, kg: kg });
-      render(name, true);
-    }
-    function removeLine(name) { cart = cart.filter(function (x) { return x.name !== name; }); render(); }
-    function reset() {
-      cart = [];
-      done.classList.remove('show', 'auth');
-      setTimeout(function () { done.hidden = true; }, reduce ? 0 : 260);
-      render();
-    }
-    function showDone(kind) {
-      var t = total();
-      done.hidden = false;
-      done.classList.toggle('auth', kind === 'auth');
-      $('h3', done).textContent = kind === 'auth' ? 'Autorização necessária' : 'Venda concluída';
-      // Alerta (!) na autorização; o ✓ só aparece quando a venda conclui
-      $('svg path', done).setAttribute('d', kind === 'auth' ? 'M37 20 v20 M37 52 v1' : 'M22 38 l10 10 l20 -22');
-      var pText = $('p', done), row = $('.row', done);
-      row.innerHTML = '';
-      if (kind === 'auth') {
-        pText.textContent = customer + ' passaria a dever ' + brl(debt + t) + ', acima do limite de ' + brl(limit) + '. No Movix, o administrador digita a senha aqui.';
-        var ok = document.createElement('button'); ok.type = 'button'; ok.className = 'btn'; ok.textContent = 'Autorizar (simulação)';
-        ok.addEventListener('click', function () { done.classList.remove('show'); setTimeout(function () { showDone('ok'); }, reduce ? 0 : 140); });
-        var no = document.createElement('button'); no.type = 'button'; no.className = 'btn alt'; no.textContent = 'Voltar';
-        no.addEventListener('click', function () { done.classList.remove('show'); setTimeout(function () { done.hidden = true; }, 260); });
-        row.append(ok, no);
-      } else {
-        var how = { PIX: 'no PIX', DINHEIRO: 'em dinheiro', CARTAO: 'no cartão', FIADO: 'no fiado de ' + customer }[method];
-        pText.textContent = brl(t) + ' recebidos ' + how + '. O estoque já foi baixado e a venda entrou no caixa do dia.';
-        var again = document.createElement('button'); again.type = 'button'; again.className = 'btn'; again.textContent = 'Nova venda';
-        again.addEventListener('click', reset);
-        row.append(again);
-      }
-      requestAnimationFrame(function () { requestAnimationFrame(function () { done.classList.add('show'); (row.querySelector('button') || done).focus({ preventScroll: true }); }); });
-    }
-    function finishSale() {
-      if (!cart.length || !done.hidden) return;
-      if (method === 'FIADO' && debt + total() > limit) showDone('auth'); else showDone('ok');
-    }
-    $$('.pos-prod', pos).forEach(function (b) { b.addEventListener('click', function () { add(b); }); });
-    $$('.pos-pay button', pos).forEach(function (b) {
-      b.addEventListener('click', function () {
-        method = b.getAttribute('data-method');
-        $$('.pos-pay button', pos).forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); });
-        updateExtra();
-      });
-    });
-    $('.pos-clear', pos).addEventListener('click', reset);
-    finish.addEventListener('click', finishSale);
-    window.__posFinish = finishSale;
-    window.__posHasItems = function () { return cart.length > 0; };
-    render();
-  }
-
-  // ------------------------------------------------ teclas F (como no Movix)
-  // Atalho de teclado não anima (skill animate): o salto é imediato; só a tecla mostra que foi apertada.
-  var keyMap = {};
-  $$('.keycap').forEach(function (k) { keyMap[k.getAttribute('data-key')] = k; });
-  function press(k) {
-    var cap = keyMap[k];
-    if (!cap) return false;
-    cap.classList.add('pressed');
-    setTimeout(function () { cap.classList.remove('pressed'); }, 140);
-    if (k === 'F9' && window.__posHasItems && window.__posHasItems()) { window.__posFinish(); return true; }
-    var t = document.getElementById(cap.getAttribute('data-target'));
-    if (t) {
-      t.scrollIntoView({ behavior: 'instant', block: 'start' });
-      var h = t.querySelector('h2, h3');
-      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
-    }
-    return true;
-  }
-  $$('.keycap').forEach(function (k) { k.addEventListener('click', function () { press(k.getAttribute('data-key')); }); });
-  document.addEventListener('keydown', function (e) {
-    if (e.altKey || e.ctrlKey || e.metaKey || e.repeat) return;
-    var tag = (e.target && e.target.tagName) || '';
-    if (/INPUT|TEXTAREA|SELECT/.test(tag) || (e.target && e.target.isContentEditable)) return;
-    if (document.querySelector('dialog[open]')) return;
-    if (keyMap[e.key] && press(e.key)) e.preventDefault();
-  });
-
-  // ------------------------------------------------ telas ampliadas
-  // Uma lista só: as telas do percurso (na ordem) e depois as da galeria. As setas percorrem tudo.
-  var lb = $('.lb');
-  if (lb && lb.showModal) {
-    var lbImg = $('.lb-img img', lb), lbCap = $('.lb-bar b', lb), lbPanel = $('.lb-panel', lb);
-    var entries = [];
-    var stepAlts = $$('.step-shot img');
-    $$('.stage-imgs img').forEach(function (im, i) {
-      entries.push({ src: im.getAttribute('src'), caption: im.getAttribute('data-label'), alt: stepAlts[i] ? stepAlts[i].alt : '' });
-    });
-    var tourCount = entries.length;
-    $$('.gal-open').forEach(function (b) {
-      entries.push({ src: b.getAttribute('data-zoom'), caption: b.getAttribute('data-caption'), alt: b.getAttribute('data-alt') });
-    });
-    var idx = 0;
-    function setShot(i, dir) {
-      if (!entries.length) return;
-      idx = (i + entries.length) % entries.length;
-      var e = entries[idx];
-      lbImg.src = e.src; lbImg.alt = e.alt || ''; lbCap.textContent = e.caption || '';
-      if (dir && !reduce) {
-        lbImg.style.setProperty('--sx', (dir > 0 ? 16 : -16) + 'px');
-        lbImg.classList.remove('swap'); void lbImg.offsetWidth; lbImg.classList.add('swap');
-      }
-    }
-    function openAt(i, from) {
-      setShot(i, 0);
-      lb.showModal();
-      if (reduce || !lbPanel.animate || !from) return;
-      // Cresce a partir da miniatura clicada (origem no gatilho)
-      var r = from.getBoundingClientRect(), p = lb.getBoundingClientRect();
-      lbPanel.style.transformOrigin = ((r.left + r.width / 2) - p.left) + 'px ' + ((r.top + r.height / 2) - p.top) + 'px';
-      lbPanel.animate([{ opacity: 0, transform: 'scale(.92)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
-    }
-    function close() {
-      if (reduce || !lbPanel.animate) { lb.close(); return; }
-      lbPanel.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(.96)' }], { duration: 160, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }).onfinish = function () { lb.close(); };
-    }
-    var stageFrame = $('.stage-frame');
-    if (stageFrame) {
-      var openStage = function () { openAt(Math.max(0, $$('.stage-imgs img').findIndex(function (im) { return im.classList.contains('on'); })), stageFrame); };
-      stageFrame.addEventListener('click', openStage);
-      stageFrame.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openStage(); } });
-    }
-    $$('.step-shot').forEach(function (f, i) {
-      f.style.cursor = 'zoom-in';
-      f.addEventListener('click', function () { openAt(i, f); });
-    });
-    $$('.gal-open').forEach(function (b, i) { b.addEventListener('click', function () { openAt(tourCount + i, b); }); });
-    $('.lb-prev', lb).addEventListener('click', function () { setShot(idx - 1, -1); });
-    $('.lb-next', lb).addEventListener('click', function () { setShot(idx + 1, 1); });
-    $('.lb-close', lb).addEventListener('click', close);
-    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-    lb.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
-    lb.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') setShot(idx + 1, 1);
-      if (e.key === 'ArrowLeft') setShot(idx - 1, -1);
-    });
-  }
-
-  if (!hasIO || reduce) { if (!hasIO) return; }
-  if (!reduce) root.classList.add('motion');
-
-  // ------------------------------------------------ revelação suave
-  if (!reduce) {
-    var reveals = $$('.reveal');
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(function (el) {
-      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('seen'); else io.observe(el);
-    });
-    setTimeout(function () { reveals.forEach(function (el) { el.classList.add('seen'); }); }, 4000);
-  }
-
-  // ------------------------------------------------ percurso
-  var steps = $$('.step');
-  var imgs = $$('.stage-imgs img');
-  var dots = $$('.stage-dots .dot');
-  var label = $('.stage-label'), num = $('.stage-n');
-  var current = -1;
-  function activate(i) {
-    if (i === current || i < 0) return;
-    current = i;
-    steps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-    imgs.forEach(function (im, k) { im.classList.toggle('on', k === i); });
-    dots.forEach(function (d, k) { d.classList.toggle('on', k <= i); d.setAttribute('aria-current', k === i ? 'step' : 'false'); });
-    if (label && imgs[i]) label.textContent = imgs[i].getAttribute('data-label');
-    if (num) num.textContent = String(i + 1);
-    if (imgs[i + 1]) imgs[i + 1].loading = 'eager';
-  }
-  var stepIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) activate(Number(e.target.getAttribute('data-step'))); });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  steps.forEach(function (s) { stepIO.observe(s); });
-  dots.forEach(function (d, i) {
-    d.addEventListener('click', function () {
-      // Clique com o mouse: rolagem suave até a parada (ação de ponteiro, rara)
-      steps[i].scrollIntoView({ behavior: reduce ? 'instant' : 'smooth', block: 'center' });
-    });
-  });
-  activate(0);
-})();
-</script>
+</div>
+<script id="movix-site-data" type="application/json">{"site":{"url":"https://devmiqueias.github.io/movix-site/","name":"Movix PDV","title":"Movix PDV — Sistema de caixa para mercadinho, distribuidora de bebidas e conveniência","description":"Movix é o sistema PDV de frente de caixa que funciona sem internet: vendas com leitor de código de barras e balança, PIX, cartão, controle de fiado com limite, estoque, pedidos para entrega e fechamento de caixa. Feito para mercadinho, distribuidora de bebidas, depósito e conveniência.","keywords":"sistema PDV, sistema para mercadinho, sistema para distribuidora de bebidas, sistema para depósito de bebidas, programa de caixa, frente de caixa, sistema de caixa offline, controle de fiado, caderneta de fiado digital, controle de estoque, PDV com balança, sistema para loja de conveniência, sistema para mercearia, sistema para adega, fechamento de caixa, Movix","shareTitle":"Movix PDV — o caixa do seu mercadinho funcionando até sem internet","shareDescription":"Frente de caixa, fiado com limite, estoque, pedidos e fechamento de caixa num só sistema. Funciona offline, no seu computador.","shareImage":"img/movix-og.jpg","googleVerification":"","company":"Brantec"},"contact":{"whatsapp":"5573974007373","phoneDisplay":"(73) 97400-7373","message":"Quero conhecer o Movix"},"hero":{"route":"Sistema de caixa para o comércio de bairro","titleBefore":"O caixa do seu","titleHighlight":"mercadinho","titleAfter":"vendendo rápido, até sem internet.","lead":"Movix é o sistema PDV que junta frente de caixa, fiado, estoque, pedidos e fechamento de caixa. Instala no computador da loja e funciona offline.","cta":"Agendar demonstração","ctaMessage":"Quero uma demonstração do Movix","facts":["Leitor e balança","PIX e cartão","Fiado com limite"],"image":"img/movix-pdv-frente-de-caixa.webp","imageAlt":"Frente de caixa do Movix PDV: catálogo de produtos por categoria, carrinho com cerveja, gelo e carvão e total da venda em destaque","imageLabel":"Movix · Caixa (F2)"},"strip":[{"value":"100% offline","label":"vende com a internet fora do ar"},{"value":"F1 a F10","label":"cada tela num atalho de teclado"},{"value":"5 formas","label":"PIX, dinheiro, débito, crédito e fiado"},{"value":"Backup diário","label":"com cópia para pendrive ou nuvem"}],"demo":{"eyebrow":"Teste agora","title":"Faça uma venda no caixa do Movix","intro":"Clique nos produtos, escolha a forma de pagamento e finalize com F9, como no balcão. É só uma simulação: nada é enviado.","customer":"Seu Zé","customerDebt":"139,47","customerLimit":"300,00","products":[{"name":"Cerveja Pilsen Lata 350ml","price":"4,49","unit":"UN"},{"name":"Gelo em Cubos 5kg","price":"11,00","unit":"UN"},{"name":"Carvão Vegetal 3kg","price":"17,90","unit":"UN"},{"name":"Refrigerante Cola 2L","price":"10,99","unit":"UN"},{"name":"Pão Francês","price":"16,90","unit":"KG"},{"name":"Queijo Mussarela Fatiado","price":"49,90","unit":"KG"}]},"tour":{"eyebrow":"Percurso completo","title":"Um dia de loja no Movix, tela por tela","intro":"Role a página: cada parada mostra uma tela real do sistema, na ordem em que o caixa usa.","steps":[{"id":"caixa","key":"F2","exit":"Saída Caixa","title":"Frente de caixa feita para fila de sábado","text":"Bipe o código de barras, digite parte do nome ou toque no produto. O total aparece grande e a venda fecha com F9.","ticks":["**Leitor de código de barras e balança**: frios e pão francês entram pelo peso ou pela etiqueta da balança.","**Venda sai do estoque na hora** e o sistema avisa quando um item acaba no meio da venda."],"image":"img/movix-pdv-frente-de-caixa.webp","label":"Caixa (F2)","alt":"Frente de caixa do Movix PDV com catálogo de produtos, carrinho de venda e total em destaque"},{"id":"pagamento","key":"F9","exit":"Saída Pagamento","title":"PIX, dinheiro, cartão e fiado na mesma tela","text":"Escolha a forma de pagamento, digite o valor recebido e o troco aparece na hora.","ticks":["**Cinco formas de pagamento**: PIX, dinheiro com troco, débito, crédito e fiado.","**Comprovante** impresso ou em PDF com os dados da sua empresa."],"image":"img/movix-pagamento-pix-dinheiro-cartao-fiado.webp","label":"Pagamento (F9)","alt":"Tela de pagamento do sistema PDV Movix com PIX, dinheiro, débito, crédito e fiado, valor recebido e troco"},{"id":"fiado","key":"F10","exit":"Saída Clientes","title":"Controle de fiado sem caderneta","text":"Cada cliente tem limite, extrato e botão de receber. Você vê quem deve, quanto deve e desde quando.","ticks":["**Limite por cliente**: o caixa não passa do combinado sem a senha do administrador.","**Recebimento em dinheiro, PIX ou cartão**, que entra direto no caixa do dia."],"image":"img/movix-clientes-fiado.webp","label":"Clientes (F10)","alt":"Controle de fiado no Movix: lista de clientes com limite de crédito, saldo devedor e botões de receber e extrato"},{"id":"extrato","key":"F10","exit":"Extrato do fiado","title":"Cada compra e cada pagamento, em ordem","text":"O extrato mostra a venda de origem, quem atendeu e o saldo atualizado. Acabou a discussão no balcão.","ticks":["**Código da venda** em cada compra a prazo.","**Pagamento parcial** com observação."],"image":"img/movix-extrato-do-fiado.webp","label":"Extrato do fiado","alt":"Extrato do fiado de um cliente no Movix com compras a prazo e pagamento recebido"},{"id":"estoque","key":"F6","exit":"Saída Estoque","title":"Estoque que avisa antes de faltar","text":"Saiba quanto dinheiro está parado na prateleira, a margem de cada produto e o que repor hoje.","ticks":["**Alerta de reposição** com estoque mínimo por produto.","**Custo, venda e margem** lado a lado, com local: gôndola, freezer ou depósito."],"image":"img/movix-controle-de-estoque.webp","label":"Estoque (F6)","alt":"Controle de estoque do Movix com patrimônio em estoque, margem, nível de estoque por produto e alertas de reposição"},{"id":"painel","key":"F1","exit":"Saída Painel","title":"Lucro de verdade, não só faturamento","text":"Receita, custo das mercadorias e lucro do dia, da semana ou do mês, com gráficos por categoria e forma de pagamento.","ticks":["**DRE simplificado**: do faturamento bruto ao lucro líquido.","**Mais vendidos e mais lucrativos** do período."],"image":"img/movix-graficos-vendas-dre.webp","label":"Dashboard (F1)","alt":"Dashboard do Movix com evolução do faturamento, vendas por categoria, formas de pagamento e demonstrativo de resultado (DRE)"},{"id":"pedidos","key":"F3","exit":"Saída Pedidos","title":"Pedidos para mesa e entrega","text":"Lance o pedido da mesa ou da entrega, acompanhe o que está aberto e cobre no caixa quando o cliente pagar.","ticks":["**Pedidos abertos** com total e itens à vista.","**Cobrança no caixa** com um clique, inclusive no fiado."],"image":"img/movix-pedidos-comandas-entrega.webp","label":"Pedidos (F3)","alt":"Pedidos do Movix para mesa e entrega, com total e botão de cobrar no caixa"},{"id":"fechamento","key":"F2","exit":"Fechamento de caixa","title":"Turno fechado sem diferença","text":"Abertura com fundo de troco, sangria, suprimento e recebimentos de fiado: o sistema diz quanto dinheiro deve estar na gaveta.","ticks":["**Vendas por forma de pagamento** no turno.","**Histórico de caixas** para o administrador conferir."],"image":"img/movix-fechamento-de-caixa.webp","label":"Caixa · fechamento","alt":"Fechamento de caixa do Movix com fundo de troco, vendas por forma de pagamento, sangria e suprimento"}]},"gallery":{"eyebrow":"Todas as saídas","title":"Mais telas reais do Movix","intro":"Imagens do sistema funcionando numa loja de demonstração, sem montagem.","items":[{"image":"img/movix-dashboard-lucro-faturamento.webp","caption":"Painel (F1): receita, custo e lucro do período","alt":"Indicadores do Movix: receita bruta, custo das mercadorias, lucro bruto e produtos mais vendidos"},{"image":"img/movix-movimentacoes-vendas.webp","caption":"Movimentações (F4): toda venda com lucro e forma de pagamento","alt":"Movimentações do Movix com todas as vendas, forma de pagamento, valor líquido e lucro de cada uma"},{"image":"img/movix-pdv-frente-de-caixa.webp","caption":"Caixa (F2): produtos de balança e sem estoque sinalizados","alt":"Catálogo de produtos do PDV Movix com estoque, preço e itens vendidos por peso na balança"}]},"security":{"eyebrow":"Pista segura","title":"Seu caixa protegido, por dentro e por fora","intro":"O Movix passa por testes de invasão antes de cada versão. As regras de segurança ficam no servidor do sistema, não só na tela.","items":[{"title":"Cada um com sua senha","text":"Administrador e operadores de caixa entram com usuário e senha. O operador não vê lucro, não muda preço e não exclui cadastro."},{"title":"Senha do dono para exceções","text":"Desconto acima do permitido, cancelamento de venda e fiado acima do limite pedem a senha do administrador, válida uma única vez."},{"title":"Tela bloqueia sozinha","text":"Saiu do balcão, a tela trava depois de alguns minutos. Cinco senhas erradas bloqueiam o usuário por um tempo."},{"title":"Dados no seu computador","text":"Vendas e clientes ficam na loja, sem depender de servidor de terceiros e sem internet para funcionar."},{"title":"Backup automático","text":"Cópia de segurança diária, com envio extra para pendrive, HD externo ou a pasta da sua nuvem."},{"title":"Licença presa à máquina","text":"A ativação é assinada digitalmente e vinculada ao computador. Copiar o programa para outro PC não funciona."}]},"audiences":{"eyebrow":"Destinos","title":"Feito para quem vende no balcão","items":[{"title":"Mercadinho e mercearia","text":"Caixa rápido, balança, fiado da vizinhança e estoque de gôndola."},{"title":"Distribuidora de bebidas","text":"Pedidos para entrega, gelo e carvão, fiado de bares e restaurantes."},{"title":"Depósito e adega","text":"Venda em quantidade, controle de freezer e depósito, margem por produto."},{"title":"Conveniência","text":"Atendimento rápido com PIX e cartão, turnos de caixa e sangria."}]},"plans":{"eyebrow":"Como contratar","title":"Escolha o formato que cabe na sua loja","intro":"Mostramos o Movix funcionando com os produtos da sua loja e passamos os valores do formato ideal para você. Instalação, ativação e suporte pela Brantec em todos.","items":[{"name":"Mensal","note":"Para começar sem investimento alto e pagar mês a mês.","cta":"Pedir valores no WhatsApp","message":"Quero saber os valores do Movix no plano mensal","featured":false,"tag":""},{"name":"Anual","note":"Um ano de uso com condição melhor que o mensal.","cta":"Pedir valores no WhatsApp","message":"Quero saber os valores do Movix no plano anual","featured":true,"tag":"Mais escolhido"},{"name":"Vitalícia","note":"Pague uma vez e use para sempre neste computador.","cta":"Pedir valores no WhatsApp","message":"Quero saber os valores da licença vitalícia do Movix","featured":false,"tag":""}]},"faq":{"eyebrow":"Informações","title":"Perguntas frequentes","items":[{"q":"O Movix funciona sem internet?","a":"Sim. O Movix roda no computador da loja e guarda os dados nele. A internet pode cair que o caixa continua vendendo, recebendo fiado e fechando o turno."},{"q":"O Movix controla fiado?","a":"Sim. Cada cliente tem limite de fiado, extrato com as compras e os pagamentos e botão de receber. Vender acima do limite ou mudar o limite exige a senha do administrador."},{"q":"Funciona com balança e leitor de código de barras?","a":"Sim. O leitor de código de barras funciona como teclado e a balança é lida pela porta serial. Produtos por quilo (frios, pão, carnes) também entram pela etiqueta da balança."},{"q":"Serve para distribuidora de bebidas e depósito?","a":"Sim. O Movix nasceu no balcão de distribuidora: pedidos para entrega, gelo e carvão, venda em quantidade, fiado de bares e restaurantes e controle de estoque por gôndola, freezer e depósito."},{"q":"Meus dados ficam seguros?","a":"Os dados ficam no seu computador, com backup automático e cópia extra para pendrive, HD externo ou pasta da nuvem. Cada pessoa entra com usuário e senha, e o operador de caixa só faz o que o administrador permitir."},{"q":"Como contratar o Movix?","a":"Você escolhe entre plano mensal, plano anual ou licença vitalícia. Chame a Brantec no WhatsApp: mostramos o sistema funcionando com os produtos da sua loja e passamos os valores do formato ideal para você."},{"q":"Qual computador eu preciso?","a":"Um computador com Windows 10 ou 11. A tela foi desenhada para monitores comuns de caixa, de 1366×768 em diante."}]},"final":{"title":"Próxima saída: o seu caixa no Movix.","text":"Mostramos o sistema funcionando com os produtos da sua loja. Chame no WhatsApp e agende.","cta":"Chamar no WhatsApp"},"footer":{"left":"Movix PDV · sistema de frente de caixa, fiado e estoque · desenvolvido pela Brantec","right":"Imagens: telas reais do Movix com dados de demonstração."}}</script>
+<script type="module" src="assets/movix-app.js"></script>
 <!-- SITE:BODY-END -->
 </body>
 </html>

@@ -56,6 +56,7 @@ export function buildView(data) {
   }
   d.faq.items.forEach((f, i) => { f.open = i === 0; });
   d.jsonld = JSON.stringify(jsonLd(d), null, 2).replace(/</g, '\\u003c');
+  d.siteJson = JSON.stringify(data).replace(/</g, '\\u003c');
   return d;
 }
 
