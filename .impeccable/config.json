@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/styles/movix.css"
+        ],
+        "createdAt": "2026-11-27T09:33:26.792Z",
+        "reason": "Claude triage: filete amarelo de 8px fica só no topo, que já é reto (border-radius 0 0 4px 4px); só os cantos de baixo são arredondados"
+      }
+    ]
+  }
+}
