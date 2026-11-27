@@ -240,7 +240,7 @@
     max-width: 100%;
     background: var(--movix-board);
     color: var(--movix-board-text);
-    border-radius: 4px;
+    border-radius: 0 0 4px 4px;
     padding: clamp(24px, 4vw, 38px);
     border-top: 8px solid var(--movix-sign);
     overflow: hidden;
@@ -584,6 +584,7 @@
     position: relative;
     border: 2px solid var(--color-border-emphasized) !important;
     border-top: 8px solid var(--movix-sign) !important;
+    border-radius: 0 0 4px 4px !important;
   }
 
   /* Celular: seletores rolam de lado em vez de cortar o nome ("Pagam...") */
