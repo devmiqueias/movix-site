@@ -1,0 +1,606 @@
+@layer reset, astryx-base, astryx-theme, movix-custom;
+
+@import '@astryxdesign/core/reset.css';
+@import '@astryxdesign/core/astryx.css';
+
+@layer movix-custom {
+  /* Identidade "Sinalização" (igual ao app Movix 2.12): placas chapadas, sem vidro nem sombra */
+  :root {
+    --movix-sign: #FFD200;
+    --movix-sign-hover: #FFDC33;
+    --movix-ink: #111111;
+    --movix-board: #111111;
+    --movix-board-text: #FFFFFF;
+    --movix-board-muted: #C9C9C4;
+    --movix-board-line: #2E2E2E;
+    --movix-wrap: 1220px;
+    --movix-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  [data-theme-mode='dark'] {
+    --movix-board: #000000;
+    --movix-board-line: #333333;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "Overpass", system-ui, "Segoe UI", Arial, sans-serif;
+    scrollbar-color: var(--color-border-emphasized) transparent;
+    scrollbar-width: thin;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-background-body);
+    color: var(--color-text-primary);
+    font-family: "Overpass", system-ui, "Segoe UI", Arial, sans-serif;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    caret-color: var(--color-accent);
+  }
+
+  ::selection {
+    background: var(--movix-sign);
+    color: var(--movix-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--movix-sign);
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  /* Chão da página: cor única, sem degradê */
+  .movix-atmosphere {
+    position: relative;
+    min-height: 100vh;
+    isolation: isolate;
+    background: var(--color-background-body);
+  }
+
+  .movix-atmosphere[data-theme-mode='dark'] {
+    background: var(--color-background-body);
+  }
+
+  .movix-wrap {
+    width: 100%;
+    max-width: var(--movix-wrap);
+    margin-inline: auto;
+    padding-inline: clamp(16px, 3vw, 28px);
+  }
+
+  .movix-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Scroll progress bar */
+  .movix-scroll-lane {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 60;
+    pointer-events: none;
+  }
+
+  .movix-scroll-lane > span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: 0 50%;
+    background: var(--movix-sign);
+  }
+
+  /* Barra superior reta, com linha de base */
+  .movix-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-background-body);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .movix-header-inner {
+    width: 100%;
+    max-width: var(--movix-wrap);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 64px;
+    padding: 8px clamp(16px, 3vw, 28px);
+  }
+
+  .movix-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .movix-brand-mark {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .movix-brand-sub {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .movix-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .movix-nav-link {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 7px 12px;
+    border-radius: 3px;
+    transition: color 0.16s ease, background-color 0.16s ease;
+    white-space: nowrap;
+  }
+
+  .movix-nav-link:hover {
+    color: var(--color-text-primary);
+    background: var(--color-background-surface);
+  }
+
+  .movix-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .movix-mobile-only {
+    display: none;
+  }
+
+  @media (max-width: 1020px) {
+    .movix-nav-links,
+    .movix-desktop-only {
+      display: none !important;
+    }
+    .movix-mobile-only {
+      display: inline-flex;
+    }
+  }
+
+  /* Cartões: placas chapadas com contorno fino */
+  .astryx-card,
+  .astryx-clickable-card,
+  .astryx-selectable-card {
+    background: var(--color-background-card) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+    transition: border-color 0.16s ease, background-color 0.16s ease !important;
+  }
+
+  .astryx-clickable-card:hover,
+  .astryx-selectable-card:hover {
+    border-color: var(--color-border-emphasized) !important;
+  }
+
+  .astryx-selectable-card[aria-checked='true'],
+  .astryx-selectable-card[data-selected='true'] {
+    border-color: var(--color-border-emphasized) !important;
+    box-shadow: inset 4px 0 0 var(--movix-sign) !important;
+  }
+
+  /* Seletor fora da placa */
+  .astryx-segmented-control {
+    background: var(--color-background-surface) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+  }
+
+  /* Hero section */
+  .movix-hero {
+    position: relative;
+    padding-block: clamp(26px, 4vw, 52px) clamp(24px, 3vw, 40px);
+  }
+
+  .movix-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.18fr);
+    gap: clamp(24px, 4vw, 44px);
+    align-items: center;
+  }
+
+  @media (max-width: 980px) {
+    .movix-hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Placa principal: quadro preto com filete amarelo no topo */
+  .movix-plate {
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+    background: var(--movix-board);
+    color: var(--movix-board-text);
+    border-radius: 4px;
+    padding: clamp(24px, 4vw, 38px);
+    border-top: 8px solid var(--movix-sign);
+    overflow: hidden;
+  }
+
+  .movix-plate::after {
+    content: none;
+  }
+
+  .movix-pos-layout .movix-plate {
+    box-shadow: none;
+  }
+
+  .movix-hero-title {
+    font-size: clamp(1.9rem, 3.5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    margin: 0;
+    color: #FFFFFF;
+  }
+
+  .movix-plate h1,
+  .movix-plate h2,
+  .movix-plate h3 {
+    color: #FFFFFF;
+    text-wrap: balance;
+  }
+
+  .movix-hero-title em {
+    font-style: normal;
+    color: var(--movix-sign);
+  }
+
+  .movix-hero-lead {
+    color: var(--movix-board-muted);
+    font-size: 1.06rem;
+    line-height: 1.55;
+    max-width: min(46ch, 100%);
+    overflow-wrap: break-word;
+    margin: 0;
+  }
+
+  /* Seletor dentro da placa preta: item ativo em amarelo */
+  .movix-plate .astryx-segmented-control {
+    background: #1F1F1F !important;
+    border: 1px solid var(--movix-board-line) !important;
+    box-shadow: none !important;
+  }
+
+  .movix-plate .astryx-segmented-control-item {
+    color: #F2F2EF !important;
+  }
+
+  .movix-plate .astryx-segmented-control-item[data-selected='true'] {
+    background: var(--movix-sign) !important;
+    color: var(--movix-ink) !important;
+  }
+
+  .movix-cta-amber {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 3px;
+    background: var(--movix-sign);
+    color: var(--movix-ink);
+    font-weight: 800;
+    font-size: 0.98rem;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.16s ease, transform 0.16s var(--movix-ease);
+  }
+
+  .movix-cta-amber:hover {
+    background: var(--movix-sign-hover);
+  }
+
+  .movix-cta-amber:active {
+    transform: scale(0.98);
+  }
+
+  .movix-cta-amber kbd,
+  .movix-cta-amber [class*='kbd'] {
+    background: var(--movix-ink) !important;
+    color: var(--movix-sign) !important;
+    border-color: var(--movix-ink) !important;
+  }
+
+  .movix-cta-outline-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 3px;
+    background: transparent;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.96rem;
+    text-decoration: none;
+    border: 1px solid #5A5A58;
+    cursor: pointer;
+    transition: border-color 0.16s ease, background-color 0.16s ease;
+  }
+
+  .movix-cta-outline-light:hover {
+    border-color: #FFFFFF;
+    background: #1F1F1F;
+  }
+
+  /* Moldura da tela do app: faixa amarela como no Movix */
+  .movix-stage-wrap {
+    min-width: 0;
+  }
+
+  .movix-stage-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--color-background-card);
+    border: 1px solid var(--color-border-emphasized);
+  }
+
+  .movix-window-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--movix-sign);
+    color: var(--movix-ink);
+  }
+
+  .movix-window-dots {
+    display: none;
+  }
+
+  .movix-shot-viewport {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--color-background-surface);
+    cursor: zoom-in;
+  }
+
+  .movix-shot-viewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    display: block;
+    transition: transform 0.5s var(--movix-ease), opacity 0.3s ease;
+  }
+
+  .movix-shot-viewport:hover img {
+    transform: none;
+  }
+
+  .movix-shot-zoom-pill {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 3px;
+    background: var(--movix-ink);
+    color: var(--movix-sign);
+    font-size: 0.78rem;
+    font-weight: 700;
+    pointer-events: none;
+  }
+
+  /* Subsuperfície chapada dentro de cartões (sem cartão aninhado) */
+  .movix-subsurface {
+    background: var(--color-background-surface);
+    border-radius: 3px;
+    padding: 16px;
+  }
+
+  .movix-subsurface-row {
+    background: transparent;
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 2px;
+  }
+
+  .movix-subsurface-row:last-child {
+    border-bottom: none;
+  }
+
+  /* Ritmo de seções: faixas alternadas chapadas */
+  .movix-section {
+    padding-block: clamp(48px, 6vw, 84px);
+    scroll-margin-top: 86px;
+  }
+
+  .movix-section-surface {
+    background: var(--color-background-surface);
+    border-block: 1px solid var(--color-border);
+  }
+
+  /* Interactive POS Demo */
+  .movix-pos-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .movix-pos-layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .movix-pos-products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .movix-pos-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .movix-pos-prod-btn {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 132px;
+    padding: 14px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background-card);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.14s var(--movix-ease);
+  }
+
+  .movix-pos-prod-btn:hover {
+    border-color: var(--color-border-emphasized);
+  }
+
+  .movix-pos-prod-btn:active {
+    transform: scale(0.97);
+  }
+
+  .movix-pos-prod-btn[data-flash='true'] {
+    border-color: var(--movix-ink);
+    box-shadow: inset 0 0 0 2px var(--movix-sign);
+  }
+
+  /* Interactive Tour */
+  .movix-tour-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.22fr);
+    gap: clamp(24px, 4vw, 44px);
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .movix-tour-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .movix-tour-sticky {
+    position: sticky;
+    top: 94px;
+  }
+
+  .movix-tour-step-btn {
+    width: 100%;
+    text-align: left;
+    padding: 16px 18px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background-card);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: border-color 0.16s ease, background-color 0.16s ease;
+  }
+
+  .movix-tour-step-btn:hover {
+    border-color: var(--color-border-emphasized);
+  }
+
+  .movix-tour-step-btn[data-active='true'] {
+    border-color: var(--color-border-emphasized);
+    background: var(--color-background-card);
+    box-shadow: inset 6px 0 0 var(--movix-sign);
+  }
+
+  /* Feature ticks */
+  .movix-ticks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .movix-ticks li {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .movix-ticks strong {
+    color: var(--color-text-primary);
+    font-weight: 800;
+  }
+
+  .movix-tick-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    background: var(--movix-sign);
+    color: var(--movix-ink);
+    display: inline-grid;
+    place-items: center;
+    margin-top: 2px;
+  }
+
+  /* Plano em destaque: filete amarelo no topo */
+  .movix-plan-featured {
+    position: relative;
+    border: 2px solid var(--color-border-emphasized) !important;
+    border-top: 8px solid var(--movix-sign) !important;
+  }
+
+  /* Celular: seletores rolam de lado em vez de cortar o nome ("Pagam...") */
+  @media (max-width: 640px) {
+    .astryx-segmented-control {
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .astryx-segmented-control-item {
+      flex-shrink: 0;
+      min-width: max-content;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
